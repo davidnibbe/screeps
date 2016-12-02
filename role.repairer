@@ -19,12 +19,13 @@ var roleRepairer = {
             }
         }
         else {
-	    if (creep.memory.cachedtarget == null){
+	    if (creep.memory.cachefull === 0){
                 creep.memory.cachedtarget = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {return (structure.hits < structure.hitsMax / 2 );}})[0];
             }
 	    if (creep.memory.cachedtarget.hits === creep.memory.cachedtarget.hitsMax){
-	    	creep.memory.cachedtarget = null;
+	    	creep.memory.cachefull = 0;
+		creep.memory.cachetarget === null;
 	    }
             if (creep.pos.isNearTo(cachedtarget)){
                 creep.repair(cachedtarget);
