@@ -19,15 +19,19 @@ var roleRepairer = {
             }
         }
         else {
-            var targets = creep.room.find(FIND_STRUCTURES, {
-                filter: (structure) => {return (structure.hits < structure.hitsMax / 2 );}}
-            );
-            if (creep.pos.isNearTo(targets[0])){
-                creep.repair(targets[0]);
+	    if (creep.memory.cachedtarget === null){
+                creep.memory.cachedtarget = creep.room.find(FIND_STRUCTURES, {
+                filter: (structure) => {return (structure.hits < structure.hitsMax / 2 );}})[0];
+            }
+	    if (creep.memory.cachedtarget.hits === creep.memory.cachedtarget.hitsMax){
+	    	creep.memory.cachedtarget = null;
+	    }
+            if (creep.pos.isNearTo(cachedtarget)){
+                creep.repair(cachedtarget);
             }
             else {
                 moverequired = true;
-                movetarget = targets[0];
+                movetarget = cachedtarget;
             }
         }
         if (moverequired){
