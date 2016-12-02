@@ -20,6 +20,10 @@ var roleHarvester = {
                     creep.moveTo(targets[0]);
                 }
             }
+	    else {
+                var availflags = creep.room.find(FIND_FLAGS)
+                    creep.moveTo(availflags[creep.memory.assignedSource]);
+            }
         }
 	}
 };
