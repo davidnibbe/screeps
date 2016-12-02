@@ -28,7 +28,7 @@ var roleRepairer = {
             }
             else {
                 moverequired = true;
-                movetarget = spawn;
+                movetarget = targets[0];
             }
         }
         if (moverequired){
