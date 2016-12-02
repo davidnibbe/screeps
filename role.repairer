@@ -28,9 +28,9 @@ var roleRepairer = {
 		movetarget = spawn;
             }
 	}
-    }
-    if (moverequired){
-        creep.moveTo(movetarget);
+	if (moverequired){
+            creep.moveTo(movetarget);
+        }
     }
 };
 
