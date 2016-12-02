@@ -3,13 +3,13 @@ var roleRepairer = {
     /** @param {Creep} creep **/
     run: function(creep) {
         var moverequired = false;
-	var movetotarget = null;
-	if (creep.energy === 0){
+        var movetotarget = null;
+        if (creep.energy === 0){
 	    var spawn = creep.pos.findClosestByRange(FIND_MY_SPAWNS)
 	    if (creep.pos.isNearTo(spawn)){
 	        if (spawn.energy > 199){
-		    var transferresult = spawn.transferEnergy(creep);
-		}
+                var transferresult = spawn.transferEnergy(creep);
+                }
             }
 	    else {
 	        moverequired = true;
