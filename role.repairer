@@ -22,7 +22,6 @@ var roleRepairer = {
             var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {return (structure.hits < structure.hitsMax / 2 );}}
             );
-	    console.log(targets[0]);
             if (creep.pos.isNearTo(targets[0])){
                 creep.repair(targets[0]);
             }
