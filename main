@@ -9,6 +9,7 @@ module.exports.loop = function () {
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
+    var spawners = _.filter(Game.spawns, (spawn) => spawn.energy < spawn.energyCapacity);
     
     if(harvesters.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester', assignedSource: '0'});
