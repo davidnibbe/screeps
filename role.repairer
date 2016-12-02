@@ -32,7 +32,7 @@ var roleRepairer = {
             }
         }
         if (moverequired){
-	    console.log('moving');
+	    console.log("creep.name moving");
             creep.moveTo(movetarget);
         }
     }
