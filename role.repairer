@@ -31,6 +31,6 @@ var roleRepairer = {
     if (moverequired){
         creep.moveTo(movetarget);
     }
-};
+}
 
 module.exports = roleRepairer;
