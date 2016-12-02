@@ -5,30 +5,34 @@ var roleRepairer = {
         var moverequired = false;
         var movetotarget = null;
         if (creep.energy === 0){
-	    var spawn = creep.pos.findClosestByRange(FIND_MY_SPAWNS)
-	    if (creep.pos.isNearTo(spawn)){
-	        if (spawn.energy > 199){
+            console.log("creep.name energy 0");
+            var spawn = creep.pos.findClosestByRange(FIND_MY_SPAWNS)
+            if (creep.pos.isNearTo(spawn)){
+                if (spawn.energy > 199){
                 var transferresult = spawn.transferEnergy(creep);
                 }
             }
-	    else {
-	        moverequired = true;
-		movetarget = spawn;
-	    }
+            else {
+                console.log("movement required. moving to spawn.name");
+                moverequired = true;
+                movetarget = spawn;
+            }
         }
-	else {
-	    var targets = creep.room.find(FIND_STRUCTURES, {
+        else {
+            var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {return (structure.hits < structure.hitsMax / 2 );}}
             );
-	    if (creep.pos.isNearTo(targets[0])){
-	        creep.repair(targets[0]);
-	    }
-	    else {
-	        moverequired = true;
-		movetarget = spawn;
+	    console.log(targets[0]);
+            if (creep.pos.isNearTo(targets[0])){
+                creep.repair(targets[0]);
             }
-	}
-	if (moverequired){
+            else {
+                moverequired = true;
+                movetarget = spawn;
+            }
+        }
+        if (moverequired){
+	    console.log('moving');
             creep.moveTo(movetarget);
         }
     }
