@@ -31,7 +31,6 @@ var roleRepairer = {
             }
         }
         if (moverequired){
-	    creep.say("moving");
             creep.moveTo(movetarget);
         }
     }
