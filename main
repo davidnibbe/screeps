@@ -13,8 +13,8 @@ module.exports.loop = function () {
     
     for(var spawners in fullspawners) {
     
-        if(harvesters.length < 2) {
-            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester', assignedSource: '0'});
+        if(harvesters.length < 3) {
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester', assignedSource: '0'});
             console.log('Spawning new harvester: ' + newName);
             break;
         }
@@ -25,7 +25,7 @@ module.exports.loop = function () {
             break;
         }
 
-        if(upgraders.length < 2) {
+        if(upgraders.length < 3) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
             console.log('Spawning new upgrader: ' + newName);
             break;
