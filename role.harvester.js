@@ -14,8 +14,8 @@ var roleHarvester = {
                         return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION) && structure.energy < structure.energyCapacity;
                     }
             });
-                if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
+                if(creep.transfer(spawnextension, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(spawnextension);
                 }
 	    else {
                 var availflags = creep.room.find(FIND_FLAGS)
