@@ -21,11 +21,9 @@ module.exports.loop = function () {
                       return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN);
                   }
       });
-
+      console.log(availablestructures[0]);
       for(var structurename in availablestructures){
-        var structure = Game.structure[structurename];
-        var structurename2 = structure.name;
-        console.log(structurename2);
+        console.log('made in');
         energyavailable += structure.energy;
         console.log(energyavailable);
       }
