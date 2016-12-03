@@ -11,6 +11,7 @@ var roleHarvester = {
         }
       }
       else {
+
         //Find sapwners and extensions
         spawnextension = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
@@ -19,7 +20,7 @@ var roleHarvester = {
                     }
             });
 
-        if(spawnextension.length != 'undefined'){
+        if(spawnextension.length > 0){
           //Transfer energy to spawner or extension if close enough, otherwise, move closer to spawner or extension
           if(creep.transfer(spawnextension[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
               creep.moveTo(spawnextension[0]);
