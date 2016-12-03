@@ -12,7 +12,12 @@ var roleHarvester = {
       }
       else {
         //Find sapwners and extensions
-        spawnextension = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {filter: (structure) => {return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION);}})
+        spawnextension = creep.room.find(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
+                            structure.energy < structure.energyCapacity;
+                    }
+            });
 
         if(spawnextension.length != 'undefined'){
           //Transfer energy to spawner or extension if close enough, otherwise, move closer to spawner or extension
