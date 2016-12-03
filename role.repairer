@@ -5,6 +5,7 @@ var roleRepairer = {
         var moverequired = false;
         var movetotarget = null;
         if (creep.energy === 0){
+	    creep.say("energy gone");
             var spawn = creep.pos.findClosestByRange(FIND_MY_SPAWNS);
             if (creep.pos.isNearTo(spawn)){
                 if (spawn.energy > 199){
