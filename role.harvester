@@ -15,7 +15,6 @@ var roleHarvester = {
                             structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
                     }
             });
-	    console.log(target);
                 if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target);
                 }
