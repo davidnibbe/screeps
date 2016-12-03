@@ -18,8 +18,7 @@ module.exports.loop = function () {
       var spawner = Game.spawns[spawnname]
       availablestructures = spawner.room.find(FIND_MY_STRUCTURES, {
                   filter: (structure) => {
-                      return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
-                          structure.energy < structure.energyCapacity;
+                      return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN);
                   }
       });
 
@@ -28,15 +27,15 @@ module.exports.loop = function () {
       }
       if(harvesters.length < 3){
         if(energyavailable >= 550) {
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
+          var newName = spawner.createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
           logspawn = 1;
         }
         if(energyavailable > 300 && energyavailable < 550) {
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester'});
+          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester'});
           logspawn = 1;
         }
         if(energyavailable > 200 && energyavailable < 300){
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'harvester'});
+          var newName = spawner.createCreep([WORK,CARRY,MOVE], undefined, {role: 'harvester'});
           logspawn = 1;
         }
         if(logspawn === 1){
@@ -47,15 +46,15 @@ module.exports.loop = function () {
 
       if(builders.length < 3){
         if(energyavailable >= 550) {
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
+          var newName = spawner.createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
           logspawn = 1;
         }
         if(energyavailable > 350 && energyavailable < 550) {
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
+          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
           logspawn = 1;
         }
         if(energyavailable > 200 && energyavailable < 350){
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'builder'});
+          var newName = spawner.createCreep([WORK,CARRY,MOVE], undefined, {role: 'builder'});
           logspawn = 1;
         }
         if(logspawn === 1){
@@ -66,15 +65,15 @@ module.exports.loop = function () {
 
       if(upgraders.length < 3){
         if(energyavailable >= 550) {
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
+          var newName = spawner.createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
           logspawn = 1;
         }
         if(energyavailable > 350 && energyavailable < 550) {
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
+          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
           logspawn = 1;
         }
         if(energyavailable > 200 && energyavailable < 350){
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
+          var newName = spawner.createCreep([WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
           logspawn = 1;
         }
         if(logspawn === 1){
@@ -85,15 +84,15 @@ module.exports.loop = function () {
 
       if(repairers.length < 2){
         if(energyavailable >= 550) {
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'repairer'});
+          var newName = spawner.createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'repairer'});
           logspawn = 1;
         }
         if(energyavailable > 300 && energyavailable < 550) {
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'repairer'});
+          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'repairer'});
           logspawn = 1;
         }
         if(energyavailable > 200 && energyavailable < 300){
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer'});
+          var newName = spawner.createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer'});
           logspawn = 1;
         }
         if(logspawn === 1){
@@ -104,15 +103,15 @@ module.exports.loop = function () {
 
       if(movers.length < 2){
         if(energyavailable >= 550) {
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'mover'});
+          var newName = spawner.createCreep([WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'mover'});
           logspawn = 1;
         }
         if(energyavailable > 300 && energyavailable < 550) {
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'mover'});
+          var newName = spawner.createCreep([WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'mover'});
           logspawn = 1;
         }
         if(energyavailable > 200 && energyavailable < 300){
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'mover'});
+          var newName = spawner.createCreep([WORK,CARRY,MOVE], undefined, {role: 'mover'});
           logspawn = 1;
         }
         if(logspawn === 1){
