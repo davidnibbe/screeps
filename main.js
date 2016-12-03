@@ -13,9 +13,9 @@ module.exports.loop = function () {
     var movers = _.filter(Game.creeps, (creep) => creep.memory.role == 'mover');
     var energyavailable;
 
-    for(var spawners in Game.spawns) {
-
-      var currentname = spawners.name;
+    for(var spawnname in Game.spawns) {
+      var spawner = Game.spawns[spawnname]
+      var currentname = spawner.name;
       console.log(currentname);
       availablestructures = currentroom.find(FIND_MY_STRUCTURES, {
                   filter: (structure) => {
