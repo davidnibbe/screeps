@@ -41,7 +41,7 @@ module.exports.loop = function () {
         
         if(movers.length < 1){
             var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'mover'});
-            console.log('Spawning new repairer: ' + newName);
+            console.log('Spawning new mover: ' + newName);
             break;
         }
     }
