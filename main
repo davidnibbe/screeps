@@ -60,7 +60,7 @@ module.exports.loop = function () {
             roleRepairer.run(creep);
         }
         if(creep.memory.role == 'mover'){
-            roleRepairer.run(creep);
+            roleMover.run(creep);
         }
     }
 }
