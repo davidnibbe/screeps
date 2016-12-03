@@ -15,9 +15,7 @@ module.exports.loop = function () {
 
     for(var spawnname in Game.spawns) {
       var spawner = Game.spawns[spawnname]
-      var currentname = spawner.name;
-      console.log(currentname);
-      availablestructures = currentroom.find(FIND_MY_STRUCTURES, {
+      availablestructures = spawner.room.find(FIND_MY_STRUCTURES, {
                   filter: (structure) => {
                       return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
                           structure.energy < structure.energyCapacity;
