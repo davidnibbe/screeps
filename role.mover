@@ -2,7 +2,7 @@ var roleMover = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-	var targets = creep.room.find(FIND_MY_STRUCTURES{
+	var targets = creep.room.find(FIND_MY_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_SPAWNER || structure.structureType == STRUCTURE_EXTENSION) &&
                             structure.energy < structure.energyCapacity;
