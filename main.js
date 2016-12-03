@@ -16,7 +16,7 @@ module.exports.loop = function () {
 
     for(var spawners in fullspawners) {
 
-      currentroom = spawners.room
+      currentroom = spawners.room;
       availablestructures = currentroom.find(FIND_STRUCTURES, {
                   filter: (structure) => {
                       return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
