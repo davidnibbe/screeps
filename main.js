@@ -41,7 +41,7 @@ module.exports.loop = function () {
 
       if(builders.length < 3){
         if(energyavailable >= 550) {
-          var newName = Game.spawns['Spawn1'].createCreep(WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
+          var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
         }
         if(energyavailable > 350 && energyavailable < 550) {
           var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
