@@ -12,8 +12,7 @@ var roleHarvester = {
       }
       else {
         //Find sapwners and extensions
-        spawnextension = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-          filter: (structure) => {return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION);}});
+        spawnextension = creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (structure) => {return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION);}})
 
         if(spawnextension.length !== 'undefined'){
           console.log(spawnextension[0]);
