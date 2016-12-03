@@ -22,8 +22,10 @@ module.exports.loop = function () {
                   }
       });
 
-      for(var structure in availablestructures){
-        console.log('made inside');
+      for(var structurename in availablestructures){
+        var structure = Game.structure[structurename];
+        var structurename2 = structure.name;
+        console.log(structurename2);
         energyavailable += structure.energy;
         console.log(energyavailable);
       }
