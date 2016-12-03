@@ -21,7 +21,9 @@ module.exports.loop = function () {
                       return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN);
                   }
       });
-      console.log(availablestructures[0]);
+
+      var energy1 = availablestructures[0].energy;
+      console.log(energy1);
       for(var structurename in availablestructures){
         console.log('made in');
         energyavailable += structure.energy;
