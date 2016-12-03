@@ -23,7 +23,9 @@ module.exports.loop = function () {
       });
 
       for(var structure in availablestructures){
-        energyavailable += structure.energy
+        console.log('made inside');
+        energyavailable += structure.energy;
+        console.log(energyavailable);
       }
       if(harvesters.length < 3){
         if(energyavailable >= 550) {
