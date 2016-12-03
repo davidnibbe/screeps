@@ -14,10 +14,10 @@ var roleHarvester = {
         //Find sapwners and extensions
         spawnextension = creep.pos.findClosestByRange(FIND_STRUCTURES, {
           filter: (structure) => {return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION) && structure.energy < structure.energyCapacity;}});
-
+        console.log(spawnextension[0]);
         //Transfer energy to spawner or extension if close enough, otherwise, move closer to spawner or extension
-        if(creep.transfer(spawnextension, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(spawnextension);
+        if(creep.transfer(spawnextension[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(spawnextension[0]);
         }
       }
 	}
