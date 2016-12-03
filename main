@@ -14,7 +14,7 @@ module.exports.loop = function () {
     for(var spawners in fullspawners) {
     
         if(harvesters.length < 3) {
-            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester', assignedSource: '0'});
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester', assignedSource: '0'});
             console.log('Spawning new harvester: ' + newName);
             break;
         }
