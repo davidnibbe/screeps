@@ -32,35 +32,67 @@ module.exports.loop = function () {
         if(energyavailable > 300 && energyavailable < 550) {
           var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester'});
         }
-        else{
+        if(energyavailable > 200 && energyavailable < 300){
           var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'harvester'});
         }
         console.log('Spawning new harvester: ' + newName);
         break;
       }
 
-      if(builders.length < 3) {
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'builder'});
-          console.log('Spawning new builder: ' + newName);
-          break;
+      if(builders.length < 3){
+        if(energyavailable >= 550) {
+          var newName = Game.spawns['Spawn1'].createCreep(WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
+        }
+        if(energyavailable > 350 && energyavailable < 550) {
+          var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
+        }
+        if(energyavailable > 200 && energyavailable < 350){
+          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'harvester'});
+        }
+        console.log('Spawning new harvester: ' + newName);
+        break;
       }
 
-      if(upgraders.length < 3) {
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
-          console.log('Spawning new upgrader: ' + newName);
-          break;
+      if(upgraders.length < 3){
+        if(energyavailable >= 550) {
+          var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
+        }
+        if(energyavailable > 350 && energyavailable < 550) {
+          var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
+        }
+        if(energyavailable > 200 && energyavailable < 350){
+          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'harvester'});
+        }
+        console.log('Spawning new harvester: ' + newName);
+        break;
       }
 
       if(repairers.length < 2){
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer'});
-          console.log('Spawning new repairer: ' + newName);
-          break;
+        if(energyavailable >= 550) {
+          var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'harvester'});
+        }
+        if(energyavailable > 300 && energyavailable < 550) {
+          var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester'});
+        }
+        if(energyavailable > 200 && energyavailable < 300){
+          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'harvester'});
+        }
+        console.log('Spawning new harvester: ' + newName);
+        break;
       }
 
-      if(movers.length < 1){
-          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'mover'});
-          console.log('Spawning new mover: ' + newName);
-          break;
+      if(movers.length < 2){
+        if(energyavailable >= 550) {
+          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'harvester'});
+        }
+        if(energyavailable > 300 && energyavailable < 550) {
+          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
+        }
+        if(energyavailable > 200 && energyavailable < 300){
+          var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'harvester'});
+        }
+        console.log('Spawning new harvester: ' + newName);
+        break;
       }
     }
     for(var name in Game.creeps) {
