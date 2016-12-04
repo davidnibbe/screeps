@@ -6,32 +6,34 @@ var roleMover = require('role.mover');
 
 
 module.exports.loop = function () {
-
+    //get a list of all the creeps in all the roles
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
     var movers = _.filter(Game.creeps, (creep) => creep.memory.role == 'mover');
+
+    //other variable declaration
     var logspawn = 0;
     var energyavailable = 0;
 
+    //main loop for spawners
     for(var spawnname in Game.spawns) {
       var spawner = Game.spawns[spawnname]
+
+      //find all energy structures in the same room as the spawner
       availablestructures = spawner.room.find(FIND_MY_STRUCTURES, {
                   filter: (structure) => {
                       return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN);
                   }
       });
 
+      //Run through all the spawns/extensions/containers/storage and add up the energy in the room
       for(var i = 0, len = availablestructures.length; i < len; i++){
-        console.log(availablestructures[i]);
-        var structureenergy = availablestructures[i].energy;
-        console.log(structureenergy);
-        var structurename = availablestructures[i].name;
-        console.log(structurename);
         energyavailable += availablestructures[i].energy;
-        console.log(energyavailable);
       }
+
+      //code to create harvesters based on available energy and number of harvesters
       if(harvesters.length < 3){
         if(energyavailable >= 550) {
           var newName = spawner.createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
@@ -51,6 +53,7 @@ module.exports.loop = function () {
         }
       }
 
+      //code to create builders based on available energy and number of harvesters
       if(builders.length < 3){
         if(energyavailable >= 550) {
           var newName = spawner.createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
@@ -70,6 +73,7 @@ module.exports.loop = function () {
         }
       }
 
+      //code to create upgraders based on available energy and number of harvesters
       if(upgraders.length < 3){
         if(energyavailable >= 550) {
           var newName = spawner.createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
@@ -89,6 +93,7 @@ module.exports.loop = function () {
         }
       }
 
+      //code to create repairers based on available energy and number of harvesters
       if(repairers.length < 2){
         if(energyavailable >= 550) {
           var newName = spawner.createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'repairer'});
@@ -108,6 +113,7 @@ module.exports.loop = function () {
         }
       }
 
+      //code to create movers based on available energy and number of harvesters
       if(movers.length < 2){
         if(energyavailable >= 550) {
           var newName = spawner.createCreep([WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'mover'});
@@ -127,6 +133,8 @@ module.exports.loop = function () {
         }
       }
     }
+
+    //main loop for creeps: based on role jump to the role module associated with that role
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
         if(creep.memory.role == 'harvester') {
