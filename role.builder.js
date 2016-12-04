@@ -24,7 +24,7 @@ var roleBuilder = {
 	    else {
       	var sources = creep.pos.findClosestByPath(FIND_SOURCES);
         var spawn = creep.pos.findClosestByRange(FIND_MY_SPAWNS);
-        if (spawn.energy < 199){
+        if (!creep.memory.harvesting && spawn.energy < 199){
           creep.memory.harvesting = true
           creep.say('harvesting');
         }
