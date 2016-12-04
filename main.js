@@ -24,8 +24,8 @@ module.exports.loop = function () {
 
       var energy1 = availablestructures[0].energy;
       console.log(energy1);
-      for(var structurename in availablestructures){
-        console.log(structurename);
+      for(var i = 0, len = availablestructures.length; i < len; i++){
+        console.log(availablestructures[i].name);
         energyavailable += structurename.energy;
         console.log(energyavailable);
       }
