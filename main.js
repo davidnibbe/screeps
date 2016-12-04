@@ -3,6 +3,7 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
 var roleMover = require('role.mover');
+var energyavailable;
 
 module.exports.loop = function () {
 
@@ -11,7 +12,6 @@ module.exports.loop = function () {
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
     var movers = _.filter(Game.creeps, (creep) => creep.memory.role == 'mover');
-    var energyavailable;
     var logspawn = 0;
 
     for(var spawnname in Game.spawns) {
