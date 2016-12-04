@@ -23,6 +23,11 @@ module.exports.loop = function () {
       });
 
       for(var i = 0, len = availablestructures.length; i < len; i++){
+        console.log(availablestructures[i]);
+        var structureenergy = availablestructures[i].energy;
+        console.log(structureenergy);
+        var structurename = availablestructures[i].name;
+        console.log(structurename);
         energyavailable += availablestructures[i].energy;
         console.log(energyavailable);
       }
