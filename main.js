@@ -22,11 +22,8 @@ module.exports.loop = function () {
                   }
       });
 
-      var energy1 = availablestructures[0].energy;
-      console.log(energy1);
       for(var i = 0, len = availablestructures.length; i < len; i++){
-        console.log(availablestructures[i].name);
-        energyavailable += structurename.energy;
+        energyavailable += availablestructures[i].energy;
         console.log(energyavailable);
       }
       if(harvesters.length < 3){
