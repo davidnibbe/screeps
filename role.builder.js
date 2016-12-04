@@ -25,9 +25,10 @@ var roleBuilder = {
       	var sources = creep.pos.findClosestByRange(FIND_SOURCES);
         var spawn = creep.pos.findClosestByRange(FIND_MY_SPAWNS);
         if (!creep.memory.harvesting && spawn.energy < 199){
-          creep.memory.harvesting = true
+          creep.memory.harvesting = true;
           creep.say('harvesting');
         }
+
         if (!creep.memory.harvesting && creep.pos.isNearTo(spawn)){
             var transferresult = spawn.transferEnergy(creep);
             creep.say('transferring');
@@ -35,6 +36,7 @@ var roleBuilder = {
         else{
           creep.moveTo(spawn);
         }
+
         if(creep.memory.harvesting){
         	if(creep.harvest(sources) == ERR_NOT_IN_RANGE) {
             	creep.moveTo(sources);
