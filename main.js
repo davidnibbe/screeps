@@ -28,7 +28,7 @@ module.exports.loop = function () {
         console.log(structureenergy);
         var structurename = availablestructures[i].name;
         console.log(structurename);
-        var energyavailable += availablestructures[i].energy;
+        energyavailable == (energyavailable + availablestructures[i].energy);
         console.log(energyavailable);
       }
       if(harvesters.length < 3){
