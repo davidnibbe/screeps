@@ -28,6 +28,12 @@ module.exports.loop = function () {
                   }
       });
 
+      availablecontainers = spawner.room.find(FIND_STRUCTURES, {
+                  filter: (structure) => {
+                      return (structure.structureType == STRUCTURE_CONTAINER);
+                  }
+      });
+
       //Run through all the spawns/extensions/containers/storage and add up the energy in the room
       for(var i = 0, len = availablestructures.length; i < len; i++){
         energyavailable += availablestructures[i].energy;
@@ -114,7 +120,7 @@ module.exports.loop = function () {
       }
 
       //code to create movers based on available energy and number of harvesters
-      if(movers.length < 2){
+      if(movers.length < 2 && availablecontainers.length > 0){
         if(energyavailable >= 550) {
           var newName = spawner.createCreep([WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'mover'});
           logspawn = 1;
