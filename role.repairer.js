@@ -33,7 +33,7 @@ var roleRepairer = {
         }
       });
       //If there is a structure in my structures then work repair them first
-      if (mytargets > 0){
+      if (mytargets.length > 0){
         if (creep.pos.isNearTo(mytargets[0])){
           creep.repair(mytargets[0]);
         }
@@ -45,7 +45,7 @@ var roleRepairer = {
       else{
         //if there isn't any structures in my_strucutres then repair storage
         if (mystorage != null){
-          if (mystorage > 0){
+          if (mystorage.length > 0){
             if (creep.pos.isNearTo(mystorage[0])){
               creep.repair(mystorage[0]);
             }
@@ -66,7 +66,7 @@ var roleRepairer = {
         }
         //if there isn't any storage to repair, repair whatever else you can find
         else{
-          if (allstructures > 0){
+          if (allstructures.length > 0){
             if (creep.pos.isNearTo(allstructures[0])){
               creep.repair(allstructures[0]);
             }
