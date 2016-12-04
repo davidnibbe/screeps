@@ -18,9 +18,9 @@ var roleUpgrader = {
             }
         }
         else {
-            var sources = creep.pos.findClosestByPath(FIND_SOURCES);
-            if(creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources);
+            var spawn = creep.pos.findClosestByPath(FIND_MY_SPAWNS);
+            if(creep.transfer(spawn) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(spawn);
             }
         }
 	}
