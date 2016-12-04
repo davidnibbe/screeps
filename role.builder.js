@@ -29,14 +29,16 @@ var roleBuilder = {
           creep.say('harvesting');
         }
 
-        if (!creep.memory.harvesting && creep.pos.isNearTo(spawn)){
-            var transferresult = spawn.transferEnergy(creep);
-            creep.say('transferring');
+        if (!creep.memory.harvesting){
+          if (creep.pos.isNearTo(spawn)){
+              var transferresult = spawn.transferEnergy(creep);
+              creep.say('transferring');
+          }
+          else{
+            creep.moveTo(spawn);
+          }
         }
-        else{
-          creep.moveTo(spawn);
-        }
-
+        
         if(creep.memory.harvesting){
         	if(creep.harvest(sources) == ERR_NOT_IN_RANGE) {
             	creep.moveTo(sources);
