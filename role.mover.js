@@ -26,7 +26,7 @@ var roleMover = {
     if(creep.memory.transferring === false) {
       container = creep.pos.findClosestByRange(FIND_STRUCTURES, {
         filter: (structure) => {
-          return (structure.structureType == STRUCTURE_CONTAINER)}
+          return (structure.structureType == STRUCTURE_CONTAINER) && structure.store[RESOURCE_ENERGY] > 0}
         });
 
 	    if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
