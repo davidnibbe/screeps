@@ -22,11 +22,13 @@ var roleRepairer = {
           return (structure.hits < structure.hitsMax / 1.5 )
         }
       });
+      console.log(mytargets)[0];
       var mystorage = creep.room.find(FIND_STRUCTURES, {
         filter: (structure) => {
           return ((structure.structureType == STRUCTURE_CONTAINER) && structure.hits < structure.hitsMax / 1.25 )
         }
       });
+      console.log(mystorage)[0];
       var targets = creep.room.find(FIND_STRUCTURES, {
         filter: (structure) => {
           return (structure.hits < structure.hitsMax / 1.5 )
