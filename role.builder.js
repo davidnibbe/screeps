@@ -28,7 +28,7 @@ var roleBuilder = {
           creep.memory.harvesting = true
           creep.say('harvesting');
         }
-        if (creep.pos.isNearTo(spawn)){
+        if (!creep.memory.harvesting && creep.pos.isNearTo(spawn)){
             var transferresult = spawn.transferEnergy(creep);
             creep.say('transferring');
         }
