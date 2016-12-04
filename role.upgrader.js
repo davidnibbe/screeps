@@ -19,7 +19,7 @@ var roleUpgrader = {
         }
         else {
             var spawn = creep.pos.findClosestByPath(FIND_MY_SPAWNS);
-            if(creep.transfer(spawn) == ERR_NOT_IN_RANGE) {
+            if(creep.withdraw(spawn) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(spawn);
             }
         }
