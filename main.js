@@ -25,8 +25,8 @@ module.exports.loop = function () {
       var energy1 = availablestructures[0].energy;
       console.log(energy1);
       for(var structurename in availablestructures){
-        console.log('made in');
-        energyavailable += structure.energy;
+        console.log(structurename);
+        energyavailable += structurename.energy;
         console.log(energyavailable);
       }
       if(harvesters.length < 3){
