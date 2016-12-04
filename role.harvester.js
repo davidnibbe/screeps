@@ -23,14 +23,21 @@ var roleHarvester = {
         //find containers
         targetcontainer = creep.pos.findClosestByRange(FIND_STRUCTURES, {
           filter: (structure) => {
-            return (structure.structureType == STRUCTURE_CONTAINER) && structure.store[RESOURCE_ENERGY] < structure.storageCapacity;
+            return (structure.structureType == STRUCTURE_CONTAINER) && structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
           }
         });
 
         //if there are containers, transfer to container
-        if(targetcontainer != null){
-          if(creep.transfer(targetcontainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
-            creep.moveTo(targetcontainer);
+        if(targetcontainer != null || targetcontainer > 0){
+          if (targetcontainer > 0){
+            if(creep.transfer(targetcontainer[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+              creep.moveTo(targetcontainer[0]);
+            }
+          }
+          else{
+            if(creep.transfer(targetcontainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+              creep.moveTo(targetcontainer);
+            }
           }
         }
         //otherwise transfer to spawn or extension
