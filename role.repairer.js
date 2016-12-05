@@ -24,7 +24,7 @@ var roleRepairer = {
       });
       var mystorage = creep.room.find(FIND_STRUCTURES, {
         filter: (structure) => {
-          return ((structure.structureType == STRUCTURE_CONTAINER) && structure.hits < structure.hitsMax / 1.25 )
+          return ((structure.structureType == STRUCTURE_CONTAINER || structure.structureType == STRUCTURE_ROAD) && structure.hits < structure.hitsMax / 1.25 )
         }
       });
       var allstructures = creep.room.find(FIND_STRUCTURES, {
@@ -44,7 +44,6 @@ var roleRepairer = {
       }
       else{
         //if there isn't any structures in my_strucutres then repair storage
-        if (mystorage != null){
           if (mystorage.length > 0){
             if (creep.pos.isNearTo(mystorage[0])){
               creep.repair(mystorage[0]);
@@ -63,9 +62,9 @@ var roleRepairer = {
               movetarget = mystorage;
             }
           }
-        }
+
         //if there isn't any storage to repair, repair whatever else you can find
-        else{
+
           if (allstructures.length > 0){
             if (creep.pos.isNearTo(allstructures[0])){
               creep.repair(allstructures[0]);
@@ -75,7 +74,7 @@ var roleRepairer = {
               movetarget = allstructures[0];
             }
           }
-        }
+        
       }
     }
 
