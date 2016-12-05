@@ -2,8 +2,7 @@ var roleRepairer = {
 
   /** @param {Creep} creep **/
   run: function(creep) {
-    var moverequired = false;
-    var movetotarget = null;
+    var actiontaken = false;
     if (creep.carry.energy === 0){
       var spawn = creep.pos.findClosestByRange(FIND_MY_SPAWNS);
       if (spawn.energy > 199){
@@ -29,24 +28,24 @@ var roleRepairer = {
         }
       });
       //If there is a structure in my structures then work repair them first
-      if (mytargets.length > 0){
+      if ((mytargets.length > 0) && (actiontaken == false)){
         if (creep.repair(mytargets[0]) == ERR_NOT_IN_RANGE){
           creep.moveTo(mytargets[0]);
-          break;
+          actiontaken = true
         }
       }
       //if there isn't any structures in my_strucutres then repair storage
-      if (mystorage.length > 0){
+      if ((mystorage.length > 0) && (actiontaken == false)){
         if (creep.repair(mystorage[0] == ERR_NOT_IN_RANGE)){
           creep.moveTo(mystorage[0]);
-          break;
+          actiontaken = true
         }
       }
       //if there isn't any storage to repair, repair whatever else you can find
-      if (allstructures.length > 0){
+      if ((allstructures.length > 0) && (actiontaken == false)){
         if (creep.repair(allstructures[0]) == ERR_NOT_IN_RANGE){
           creep.moveTo(allstructures[0]);
-          break;
+          actiontaken = true
         }
       }
     }
