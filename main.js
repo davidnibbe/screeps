@@ -126,7 +126,7 @@ module.exports.loop = function () {
           logspawn = 1;
         }
         if(energyavailable > 300 && energyavailable < 550) {
-          var newName = spawner.createCreep([WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'mover', transferring: false});
+          var newName = spawner.createCreep([CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'mover', transferring: false});
           logspawn = 1;
         }
         if(energyavailable > 200 && energyavailable < 300){
