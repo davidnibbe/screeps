@@ -6,14 +6,10 @@ var roleRepairer = {
     var movetotarget = null;
     if (creep.carry.energy === 0){
       var spawn = creep.pos.findClosestByRange(FIND_MY_SPAWNS);
-      if (creep.pos.isNearTo(spawn)){
-        if (spawn.energy > 199){
-          var transferresult = spawn.transferEnergy(creep);
+      if (spawn.energy > 199){
+        if (spawn.transferEnergy(creep) == ERR_NOT_IN_RANGE){
+          creep.moveTo(spawn);
         }
-      }
-      else {
-        moverequired = true;
-        movetarget = spawn;
       }
     }
     else {
@@ -34,52 +30,25 @@ var roleRepairer = {
       });
       //If there is a structure in my structures then work repair them first
       if (mytargets.length > 0){
-        if (creep.pos.isNearTo(mytargets[0])){
-          creep.repair(mytargets[0]);
-        }
-        else {
-          moverequired = true;
-          movetarget = mytargets[0];
+        if (creep.repair(mytargets[0]) == ERR_NOT_IN_RANGE){
+          creep.moveTo(mytargets[0]);
+          break;
         }
       }
-      else{
-        //if there isn't any structures in my_strucutres then repair storage
-          if (mystorage.length > 0){
-            if (creep.pos.isNearTo(mystorage[0])){
-              creep.repair(mystorage[0]);
-            }
-            else {
-              moverequired = true;
-              movetarget = mystorage[0];
-            }
-          }
-          else{
-            if (creep.pos.isNearTo(mystorage)){
-              creep.repair(mystorage);
-            }
-            else {
-              moverequired = true;
-              movetarget = mystorage;
-            }
-          }
-
-        //if there isn't any storage to repair, repair whatever else you can find
-
-          if (allstructures.length > 0){
-            if (creep.pos.isNearTo(allstructures[0])){
-              creep.repair(allstructures[0]);
-            }
-            else{
-              moverequired = true;
-              movetarget = allstructures[0];
-            }
-          }
-        
+      //if there isn't any structures in my_strucutres then repair storage
+      if (mystorage.length > 0){
+        if (creep.repair(mystorage[0] == ERR_NOT_IN_RANGE)){
+          creep.moveTo(mystorage[0]);
+          break;
+        }
       }
-    }
-
-    if (moverequired){
-      creep.moveTo(movetarget);
+      //if there isn't any storage to repair, repair whatever else you can find
+      if (allstructures.length > 0){
+        if (creep.repair(allstructures[0]) == ERR_NOT_IN_RANGE){
+          creep.moveTo(allstructures[0]);
+          break;
+        }
+      }
     }
   }
 };
