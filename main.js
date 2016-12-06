@@ -27,7 +27,7 @@ module.exports.loop = function () {
 
     //main loop for spawners
     for(var spawnname in Game.spawns) {
-      var spawner = Game.spawns(spawnname);
+      var spawner = Game.spawns[spawnname];
 
       availablecontainers = spawner.room.find(FIND_STRUCTURES, {
                   filter: (structure) => {
