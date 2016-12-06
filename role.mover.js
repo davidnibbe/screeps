@@ -2,6 +2,7 @@ var roleMover = {
 
   /** @param {Creep} creep **/
   run: function(creep) {
+    var actiontaken;
     var targets = creep.room.find(FIND_MY_STRUCTURES, {
       filter: (structure) => {
         return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION) &&
@@ -27,9 +28,16 @@ var roleMover = {
       container = creep.pos.findClosestByRange(FIND_STRUCTURES, {
         filter: (structure) => {
           return (structure.structureType == STRUCTURE_CONTAINER) && structure.store[RESOURCE_ENERGY] > 0}
-        });
-
-	    if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+      });
+      fullcontainer = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+        filter: (structure) => {
+          return (structure.structureType == STRUCTURE_CONTAINER) && structure.store[RESOURCE_ENERGY] > structure.storeCapacity}
+      });
+      if(creep.withdraw(fullcontainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+        creep.moveTo(fullcontainer);
+        actiontaken = true;
+      }
+	    if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE && actiontaken == false) {
         creep.moveTo(container);
       }
     }
