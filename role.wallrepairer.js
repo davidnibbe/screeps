@@ -11,7 +11,7 @@ var roleWallRepairer = {
       }
     });
 
-    for(var percent = .001; percent < 1; percent + .001 ){
+    for(var percent = .0001; percent < 1; percent + .0001 ){
 
       for(var i = 0; i < walls.length; i++){
         if(walls[i].hits < walls[i].hitsMax / percent){
