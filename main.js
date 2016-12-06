@@ -148,27 +148,27 @@ module.exports.loop = function () {
           break;
         }
       }
+      //code to create repairers based on available energy and number of harvesters
+      if(wallrepairers.length < 1){
+        if(energyavailable >= 550) {
+          var newName = spawner.createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'wallrepairer'});
+          logspawn = 1;
+        }
+        if(energyavailable > 300 && energyavailable < 550) {
+          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'wallrepairer'});
+          logspawn = 1;
+        }
+        if(energyavailable > 200 && energyavailable < 300){
+          var newName = spawner.createCreep([WORK,CARRY,MOVE], undefined, {role: 'wallrepairer'});
+          logspawn = 1;
+        }
+        if(logspawn === 1){
+          console.log('Spawning new repairer: ' + newName);
+          break;
+        }
+      }
     }
 
-    //code to create repairers based on available energy and number of harvesters
-    if(wallrepairers.length < 1){
-      if(energyavailable >= 550) {
-        var newName = spawner.createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'wallrepairer'});
-        logspawn = 1;
-      }
-      if(energyavailable > 300 && energyavailable < 550) {
-        var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'wallrepairer'});
-        logspawn = 1;
-      }
-      if(energyavailable > 200 && energyavailable < 300){
-        var newName = spawner.createCreep([WORK,CARRY,MOVE], undefined, {role: 'wallrepairer'});
-        logspawn = 1;
-      }
-      if(logspawn === 1){
-        console.log('Spawning new repairer: ' + newName);
-        break;
-      }
-    }
 
     //main loop for creeps: based on role jump to the role module associated with that role
     for(var name in Game.creeps) {
