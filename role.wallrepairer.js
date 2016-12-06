@@ -38,7 +38,7 @@ var roleWallRepairer = {
       if (creep.repair(target) == ERR_NOT_IN_RANGE){
         creep.moveTo(target);
       }
-      else{
+      else if(!(isNaN(allstructures))){
         roleBuilder.run(creep);
       }
     }
