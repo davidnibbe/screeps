@@ -3,7 +3,6 @@ var roleRepairer = {
 
   /** @param {Creep} creep **/
   run: function(creep) {
-    var actiontaken = false;
     if (creep.carry.energy === 0){
       var spawn = creep.pos.findClosestByRange(FIND_MY_SPAWNS);
       if (spawn.energy > 199){
@@ -20,9 +19,8 @@ var roleRepairer = {
       });
       if (creep.repair(allstructures[0]) == ERR_NOT_IN_RANGE){
         creep.moveTo(allstructures[0]);
-        actiontaken = true
       }
-      else{
+      else if(!(isNaN(allstructures))){
         roleBuilder.run(creep);
       }
     }
