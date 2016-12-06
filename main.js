@@ -1,13 +1,14 @@
-var roleHarvester = require('role.harvester');
+var roleHarvester = require('role.harvester0');
+var roleHarvester = require('role.harvester1');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
 var roleMover = require('role.mover');
 
-
 module.exports.loop = function () {
     //get a list of all the creeps in all the roles
-    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+    var harvesters0 = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester0');
+    var harvesters1 = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester1');
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
@@ -17,16 +18,16 @@ module.exports.loop = function () {
     var logspawn = 0;
     var energyavailable = 0;
 
+    //clear memory of dead creeps
+    for(var i in Memory.creeps) {
+      if(!Game.creeps[i]) {
+        delete Memory.creeps[i];
+      }
+    }
+
     //main loop for spawners
     for(var spawnname in Game.spawns) {
-      var spawner = Game.spawns[spawnname]
-
-      //find all energy structures in the same room as the spawner
-      availablestructures = spawner.room.find(FIND_MY_STRUCTURES, {
-                  filter: (structure) => {
-                      return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN);
-                  }
-      });
+      var spawner = Game.spawns(spawns)
 
       availablecontainers = spawner.room.find(FIND_STRUCTURES, {
                   filter: (structure) => {
@@ -34,23 +35,30 @@ module.exports.loop = function () {
                   }
       });
 
-      //Run through all the spawns/extensions/containers/storage and add up the energy in the room
-      for(var i = 0, len = availablestructures.length; i < len; i++){
-        energyavailable += availablestructures[i].energy;
-      }
+      energyavailable = spawner.room.energyAvailable;
 
       //code to create harvesters based on available energy and number of harvesters
-      if(harvesters.length < 3){
+      if(harvesters0.length < 2){
         if(energyavailable >= 550) {
           var newName = spawner.createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
           logspawn = 1;
         }
-        if(energyavailable > 300 && energyavailable < 550) {
+        if(energyavailable => 300 && energyavailable < 550) {
           var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester'});
           logspawn = 1;
         }
-        if(energyavailable > 200 && energyavailable < 300){
-          var newName = spawner.createCreep([WORK,CARRY,MOVE], undefined, {role: 'harvester'});
+        if(logspawn === 1){
+          console.log('Spawning new harvester: ' + newName);
+          break;
+        }
+      }
+      if(harvesters1.length < 2){
+        if(energyavailable >= 550) {
+          var newName = spawner.createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
+          logspawn = 1;
+        }
+        if(energyavailable => 300 && energyavailable < 550) {
+          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester'});
           logspawn = 1;
         }
         if(logspawn === 1){
