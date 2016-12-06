@@ -4,7 +4,7 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
 var roleMover = require('role.mover');
-var roleWallRepairer = require('role.repairer');
+var roleWallRepairer = require('role.wallrepairer');
 
 module.exports.loop = function () {
     //get a list of all the creeps in all the roles
