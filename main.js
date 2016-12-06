@@ -27,7 +27,7 @@ module.exports.loop = function () {
 
     //main loop for spawners
     for(var spawnname in Game.spawns) {
-      var spawner = Game.spawns(spawns)
+      var spawner = Game.spawns(spawnname);
 
       availablecontainers = spawner.room.find(FIND_STRUCTURES, {
                   filter: (structure) => {
@@ -151,7 +151,10 @@ module.exports.loop = function () {
     //main loop for creeps: based on role jump to the role module associated with that role
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
-        if(creep.memory.role == 'harvester') {
+        if(creep.memory.role == 'harvester0') {
+            roleHarvester.run(creep);
+        }
+        if(creep.memory.role == 'harvester1') {
             roleHarvester.run(creep);
         }
         if(creep.memory.role == 'upgrader') {
