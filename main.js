@@ -40,11 +40,11 @@ module.exports.loop = function () {
       //code to create harvesters based on available energy and number of harvesters
       if(harvesters0.length < 2){
         if(energyavailable >= 550) {
-          var newName = spawner.createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
+          var newName = spawner.createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester0'});
           logspawn = 1;
         }
         if(energyavailable => 300 && energyavailable < 550) {
-          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester'});
+          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester0'});
           logspawn = 1;
         }
         if(logspawn === 1){
@@ -54,11 +54,11 @@ module.exports.loop = function () {
       }
       if(harvesters1.length < 2){
         if(energyavailable >= 550) {
-          var newName = spawner.createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
+          var newName = spawner.createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester1'});
           logspawn = 1;
         }
         if(energyavailable => 300 && energyavailable < 550) {
-          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester'});
+          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester1'});
           logspawn = 1;
         }
         if(logspawn === 1){
