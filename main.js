@@ -70,7 +70,7 @@ module.exports.loop = function () {
       }
 
       //code to create builders based on available energy and number of harvesters
-      if(builders.length < 3){
+      if(builders.length < 1){
         if(energyavailable >= 550) {
           var newName = spawner.createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
           logspawn = 1;
@@ -90,7 +90,7 @@ module.exports.loop = function () {
       }
 
       //code to create upgraders based on available energy and number of harvesters
-      if(upgraders.length < 3){
+      if(upgraders.length < 1){
         if(energyavailable >= 550) {
           var newName = spawner.createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
           logspawn = 1;
@@ -110,7 +110,7 @@ module.exports.loop = function () {
       }
 
       //code to create repairers based on available energy and number of harvesters
-      if(repairers.length < 2){
+      if(repairers.length < 1){
         if(energyavailable >= 550) {
           var newName = spawner.createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'repairer'});
           logspawn = 1;
@@ -130,7 +130,7 @@ module.exports.loop = function () {
       }
 
       //code to create movers based on available energy and number of harvesters
-      if(movers.length < 2 && availablecontainers.length > 0){
+      if(movers.length < 1 && availablecontainers.length > 0){
         if(energyavailable >= 550) {
           var newName = spawner.createCreep([WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'mover', transferring: false});
           logspawn = 1;
