@@ -1,5 +1,5 @@
-var roleHarvester = require('role.harvester0');
-var roleHarvester = require('role.harvester1');
+var roleHarvester0 = require('role.harvester0');
+var roleHarvester1 = require('role.harvester1');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
@@ -152,10 +152,10 @@ module.exports.loop = function () {
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
         if(creep.memory.role == 'harvester0') {
-            roleHarvester.run(creep);
+            roleHarvester0.run(creep);
         }
         if(creep.memory.role == 'harvester1') {
-            roleHarvester.run(creep);
+            roleHarvester1.run(creep);
         }
         if(creep.memory.role == 'upgrader') {
             roleUpgrader.run(creep);
