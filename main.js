@@ -4,6 +4,7 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
 var roleMover = require('role.mover');
+var roleWallRepairer = require('role.repairer');
 
 module.exports.loop = function () {
     //get a list of all the creeps in all the roles
@@ -13,6 +14,7 @@ module.exports.loop = function () {
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
     var movers = _.filter(Game.creeps, (creep) => creep.memory.role == 'mover');
+    var wallrepairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'wallrepairer');
 
     //other variable declaration
     var logspawn = 0;
@@ -148,6 +150,26 @@ module.exports.loop = function () {
       }
     }
 
+    //code to create repairers based on available energy and number of harvesters
+    if(wallrepairers.length < 1){
+      if(energyavailable >= 550) {
+        var newName = spawner.createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'wallrepairer'});
+        logspawn = 1;
+      }
+      if(energyavailable > 300 && energyavailable < 550) {
+        var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'wallrepairer'});
+        logspawn = 1;
+      }
+      if(energyavailable > 200 && energyavailable < 300){
+        var newName = spawner.createCreep([WORK,CARRY,MOVE], undefined, {role: 'wallrepairer'});
+        logspawn = 1;
+      }
+      if(logspawn === 1){
+        console.log('Spawning new repairer: ' + newName);
+        break;
+      }
+    }
+
     //main loop for creeps: based on role jump to the role module associated with that role
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
@@ -168,6 +190,9 @@ module.exports.loop = function () {
         }
         if(creep.memory.role == 'mover'){
             roleMover.run(creep);
+        }
+        if(creep.memory.role == 'wallrepairer') {
+            roleWallRepairer.run(creep);
         }
     }
 }
