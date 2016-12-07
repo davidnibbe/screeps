@@ -26,7 +26,14 @@ module.exports.loop = function () {
         delete Memory.creeps[i];
       }
     }
-
+    
+    var tower = Game.getObjectByID('58473f258b67cb962d963d62');
+    if(tower) {
+        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+        if(closestHostile) {
+            tower.attack(closestHostile);
+        }
+    }
     //main loop for spawners
     for(var spawnname in Game.spawns) {
       var spawner = Game.spawns[spawnname];
@@ -191,8 +198,8 @@ module.exports.loop = function () {
         if(creep.memory.role == 'mover'){
             roleMover.run(creep);
         }
-        if(creep.memory.role == 'wallrepairer') {
-            roleWallRepairer.run(creep);
-        }
+        //if(creep.memory.role == 'wallrepairer') {
+        //    roleWallRepairer.run(creep);
+        //}
     }
 }
