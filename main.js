@@ -97,7 +97,7 @@ module.exports.loop = function () {
       }
 
       //code to create upgraders based on available energy and number of harvesters
-      if(upgraders.length < 1){
+      if(upgraders.length < 2){
         if(energyavailable >= 550) {
           var newName = spawner.createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
           logspawn = 1;
