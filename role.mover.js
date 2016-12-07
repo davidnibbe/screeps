@@ -4,7 +4,8 @@ var roleMover = {
   run: function(creep) {
     var targets = creep.room.find(FIND_MY_STRUCTURES, {
       filter: (structure) => {
-        return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION) &&
+        return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION ||
+	       structure.structureType == STRUCTURE_TURRET) &&
           structure.energy < structure.energyCapacity;
         }
       });
