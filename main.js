@@ -27,7 +27,7 @@ module.exports.loop = function () {
       }
     }
     
-    var tower = Game.getObjectByID('58473f258b67cb962d963d62');
+    var tower = Game.getObjectById('58473f258b67cb962d963d62');
     if(tower) {
         var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
         if(closestHostile) {
