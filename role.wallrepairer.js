@@ -11,10 +11,10 @@ var roleWallRepairer = {
       }
     });
 
-    for(var percent = .00001; percent < 1; percent + .00001 ){
+    for(var percent = .00001; percent < 1;  percent++ ){
 
       for(var i = 0; i < walls.length; i++){
-        if(walls[i].hits < walls[i].hitsMax * percent){
+        if(walls[i].hits < (walls[i].hitsMax * percent)){
           wallfound = true;
           target = walls[i];
           break;
