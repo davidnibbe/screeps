@@ -47,134 +47,51 @@ module.exports.loop = function () {
       energyavailable = spawner.room.energyAvailable;
 
       //code to create harvesters based on available energy and number of harvesters
-      if(harvesters0.length < 2){
-        if(energyavailable >= 550) {
-          var newName = spawner.createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester0'});
-          logspawn = 1;
-        }
-        if(energyavailable => 300 && energyavailable < 550) {
-          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester0'});
-          logspawn = 1;
-        }
-        if(logspawn === 1){
-          console.log('Spawning new harvester: ' + newName);
-          break;
-        }
+      if(harvesters1.length < 2){
+        newName = spawner.createHarvester(energyavailable, 1);
+        console.log('Spawning new harvester: ' + newName);
+        break;
       }
       if(harvesters1.length < 2){
-        if(energyavailable >= 550) {
-          var newName = spawner.createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'harvester1'});
-          logspawn = 1;
-        }
-        if(energyavailable => 300 && energyavailable < 550) {
-          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'harvester1'});
-          logspawn = 1;
-        }
-        if(logspawn === 1){
-          console.log('Spawning new harvester: ' + newName);
-          break;
-        }
+        newName = spawner.createHarvester(energyavailable, 1);
+        console.log('Spawning new harvester: ' + newName);
+        break;
       }
 
       //code to create builders based on available energy and number of harvesters
       if(builders.length < 1){
-        if(energyavailable >= 550) {
-          var newName = spawner.createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
-          logspawn = 1;
-        }
-        if(energyavailable > 350 && energyavailable < 550) {
-          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
-          logspawn = 1;
-        }
-        if(energyavailable > 200 && energyavailable < 350){
-          var newName = spawner.createCreep([WORK,CARRY,MOVE], undefined, {role: 'builder'});
-          logspawn = 1;
-        }
-        if(logspawn === 1){
-          console.log('Spawning new builder: ' + newName);
-          break;
-        }
+        newName = spawner.createBalancedCreep(energyavailable, builder);
+        console.log('Spawning new builder: ' + newName);
+        break;
       }
 
       //code to create upgraders based on available energy and number of harvesters
       if(upgraders.length < 2){
-        if(energyavailable >= 550) {
-          var newName = spawner.createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
-          logspawn = 1;
-        }
-        if(energyavailable > 350 && energyavailable < 550) {
-          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
-          logspawn = 1;
-        }
-        if(energyavailable > 200 && energyavailable < 350){
-          var newName = spawner.createCreep([WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
-          logspawn = 1;
-        }
-        if(logspawn === 1){
-          console.log('Spawning new upgrader: ' + newName);
-          break;
-        }
+        newName = spawner.createBalancedCreep(energyavailable, upgrader);
+        console.log('Spawning new upgrader: ' + newName);
+        break;
       }
 
       //code to create repairers based on available energy and number of harvesters
-      if(repairers.length < 1){
-        if(energyavailable >= 550) {
-          var newName = spawner.createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'repairer'});
-          logspawn = 1;
-        }
-        if(energyavailable > 300 && energyavailable < 550) {
-          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'repairer'});
-          logspawn = 1;
-        }
-        if(energyavailable > 200 && energyavailable < 300){
-          var newName = spawner.createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer'});
-          logspawn = 1;
-        }
-        if(logspawn === 1){
-          console.log('Spawning new repairer: ' + newName);
-          break;
-        }
+      if(repairers.length < 2){
+        newName = spawner.createBalancedCreep(energyavailable, repairer);
+        console.log('Spawning new repairer: ' + newName);
+        break;
       }
 
       //code to create movers based on available energy and number of harvesters
       if(movers.length < 1 && availablecontainers.length > 0){
-        if(energyavailable >= 550) {
-          var newName = spawner.createCreep([WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'mover', transferring: false});
-          logspawn = 1;
-        }
-        if(energyavailable > 300 && energyavailable < 550) {
-          var newName = spawner.createCreep([CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'mover', transferring: false});
-          logspawn = 1;
-        }
-        if(energyavailable > 200 && energyavailable < 300){
-          var newName = spawner.createCreep([WORK,CARRY,MOVE], undefined, {role: 'mover', transferring: false});
-          logspawn = 1;
-        }
-        if(logspawn === 1){
-          console.log('Spawning new mover: ' + newName);
-          break;
-        }
+        newName = spawner.createBalancedCreep(energyavailable, mover);
+        console.log('Spawning new mover: ' + newName);
+        break;
       }
+
       //code to create repairers based on available energy and number of harvesters
-      if(wallrepairers.length < 1){
-        if(energyavailable >= 550) {
-          var newName = spawner.createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'wallrepairer'});
-          logspawn = 1;
-        }
-        if(energyavailable > 300 && energyavailable < 550) {
-          var newName = spawner.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'wallrepairer'});
-          logspawn = 1;
-        }
-        if(energyavailable > 200 && energyavailable < 300){
-          var newName = spawner.createCreep([WORK,CARRY,MOVE], undefined, {role: 'wallrepairer'});
-          logspawn = 1;
-        }
-        if(logspawn === 1){
-          console.log('Spawning new repairer: ' + newName);
-          break;
-        }
+      if(wallrepairers.length < 2){
+        newName = spawner.createBalancedCreep(energyavailable, wallrepairer);
+        console.log('Spawning new wallrepairer: ' + newName);
+        break;
       }
-    }
 
 
     //main loop for creeps: based on role jump to the role module associated with that role
