@@ -34,7 +34,7 @@ var roleHarvester = {
       var nearesttarget = creep.pos.findClosestByRange(targets);
 
       //transfer to nearest target
-      if (!(isNaN(nearesttarget))){
+      if (nearesttarget){
         if(creep.transfer(nearesttarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
           creep.moveTo(nearesttarget);
         }
