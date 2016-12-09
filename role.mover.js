@@ -18,13 +18,13 @@ var roleMover = {
       creep.say('transferring');
     }
 
-  	if(creep.memory.transferring === true){
+  	if(creep.memory.working === true){
 	    if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
 	    	creep.moveTo(targets[0]);
 	    }
   	}
 
-    if(creep.memory.transferring === false) {
+    if(creep.memory.working === false) {
       container = creep.pos.findClosestByRange(FIND_STRUCTURES, {
         filter: (structure) => {
           return (structure.structureType == STRUCTURE_CONTAINER) && structure.store[RESOURCE_ENERGY] > 0}
