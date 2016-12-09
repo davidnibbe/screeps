@@ -40,14 +40,10 @@ var roleHarvester = {
             return (structure.structureType == STRUCTURE_CONTAINER || structure.structureType == STRUCTURE_STORAGE) && structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
           }
         });
-          console.log(containerstorage);
         //add containers to spawners/extensions
         containerstorage = containerstorage.push(targets);
-          console.log(targets);
-          console.log(targets.length);
         //find the nearest thing that can take energy
         nearesttarget = creep.pos.findClosestByRange(targets);
-          console.log(nearesttarget);
         //transfer to nearest target
         if (nearesttarget){
           if(creep.transfer(nearesttarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
