@@ -16,7 +16,7 @@ module.exports = function() {
     };
   StructureSpawn.prototype.createHarvester =
     function(energy, source){
-      var numberOfParts = ((Math.floor(energy / 150 )) - 100);
+      var numberOfParts = (Math.floor((energy - 100) / 150);
       var body = [];
       for (let i = 0; i < numberOfParts; i++){
           body.push(WORK);
