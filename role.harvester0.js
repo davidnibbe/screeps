@@ -23,7 +23,7 @@ var roleHarvester = {
 
       var nearesttarget;
       if(creep.carry.energy == 0){
-          creep.memory.harvesting = true;
+          creep.memory.working = true;
       }
       else{
         //Find sapwners and extensions
