@@ -19,9 +19,22 @@ var roleMule = {
     }
 
   	if(creep.memory.working === true){
-	    if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
-	    	creep.moveTo(targets[0]);
-	    }
+      if(targets){
+        if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+  	    	creep.moveTo(targets[0]);
+  	    }
+      }
+      else{
+        var storage = creep.room.find(FIND_MY_STRUCTURES, {
+          filter: (structure) => {
+            return (structure.structureType == STRUCTURE_STORAGE) &&
+              structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
+            }
+        });
+        if(creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+  	    	creep.moveTo(storage);
+  	    }
+      }
   	}
 
     if(creep.memory.working === false) {
