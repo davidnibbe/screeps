@@ -9,12 +9,12 @@ var roleMover = {
           structure.energy < structure.energyCapacity;
         }
       });
-    if(creep.memory.transferring && creep.carry.energy == 0) {
-      creep.memory.transferring = false;
+    if(creep.memory.working && creep.carry.energy == 0) {
+      creep.memory.working = false;
       creep.say('gathering');
     }
-  	if(!creep.memory.transferring && creep.carry.energy == creep.carryCapacity) {
-      creep.memory.transferring = true;
+  	if(!creep.memory.working && creep.carry.energy == creep.carryCapacity) {
+      creep.memory.working = true;
       creep.say('transferring');
     }
 

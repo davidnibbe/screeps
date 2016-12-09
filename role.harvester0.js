@@ -2,12 +2,12 @@ var roleHarvester = {
 
   /** @param {Creep} creep **/
   run: function(creep) {
-    if(creep.memory.harvesting == true) {
+    if(creep.memory.working == true) {
       //Find all the sources
       var sources = creep.room.find(FIND_SOURCES);
 
       if(creep.carry.energy == creep.carryCapacity){
-          creep.memory.harvesting = false;
+          creep.memory.working = false;
       }
       //Harvest if close enough, if not, move closer to source
       if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
@@ -16,11 +16,11 @@ var roleHarvester = {
 
     }
 
-    if(creep.memory.harvesting == false){
+    if(creep.memory.working == false){
 
       var nearesttarget;
       if(creep.carry.energy == 0){
-          creep.memory.harvesting = true;
+          creep.memory.working = true;
       }
       //Find sapwners and extensions
       targets = creep.room.find(FIND_STRUCTURES, {
