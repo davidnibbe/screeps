@@ -7,7 +7,7 @@ var roleWallRepairer = {
     var target;
     var walls = creep.room.find(FIND_STRUCTURES, {
       filter: (structure) => {
-        return ((structure.structureType == STRUCTURE_WALL) );
+        return ((structure.structureType == STRUCTURE_WALL || structure.structureType == STRUCTURE_RAMPART));
       }
     });
 
