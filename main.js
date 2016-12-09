@@ -74,7 +74,7 @@ module.exports.loop = function () {
       }
 
       //code to create upgraders based on available energy and number of harvesters
-      if(upgraders.length < 2){
+      if(upgraders.length < 1){
         newName = spawner.createBalancedCreep(energyavailable, 'upgrader');
         if(newName){
           console.log('Spawning new upgrader: ' + newName);
@@ -83,7 +83,7 @@ module.exports.loop = function () {
       }
 
       //code to create repairers based on available energy and number of harvesters
-      if(repairers.length < 2){
+      if(repairers.length < 1){
         newName = spawner.createBalancedCreep(energyavailable, 'repairer');
         if(newName){
           console.log('Spawning new repairer: ' + newName);
@@ -92,7 +92,7 @@ module.exports.loop = function () {
       }
 
       //code to create movers based on available energy and number of harvesters
-      if(mules.length < 1 && availablecontainers.length > 0){
+      if(mules.length < 2 && availablecontainers.length > 0){
         newName = spawner.createMuleCreep(energyavailable);
         if(newName){
           console.log('Spawning new mover: ' + newName);

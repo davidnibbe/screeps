@@ -20,7 +20,7 @@ var roleUpgrader = {
       else {
         var spawn = creep.pos.findClosestByRange(FIND_MY_SPAWNS);
         if (creep.pos.isNearTo(spawn)){
-            if (creep.room.energyAvailable == creep.room.energyCapacityAvailable){
+            if (creep.room.energyAvailable == creep.room.energyCapacityAvailable * .60){
               var transferresult = spawn.transferEnergy(creep);
             }
         }
