@@ -26,7 +26,7 @@ module.exports = function() {
       }
       body.push(MOVE);
       body.push(MOVE);
-      var rolename = 'harvester' + source;
+      var roleName = 'harvester' + source;
       this.createCreep(body, undefined, { role: roleName, working: false})
     };
     StructureSpawn.prototype.createLongDistanceHarvester =
