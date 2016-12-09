@@ -92,7 +92,7 @@ module.exports.loop = function () {
       }
 
       //code to create movers based on available energy and number of harvesters
-      if(mule.length < 1 && availablecontainers.length > 0){
+      if(mules.length < 1 && availablecontainers.length > 0){
         newName = spawner.createMuleCreep(energyavailable);
         if(!(isNaN(newName))){
           console.log('Spawning new mover: ' + newName);
