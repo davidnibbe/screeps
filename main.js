@@ -20,6 +20,7 @@ module.exports.loop = function () {
     //other variable declaration
     var logspawn = 0;
     var energyavailable = 0;
+    var newname;
 
     //clear memory of dead creeps
     for(var i in Memory.creeps) {
