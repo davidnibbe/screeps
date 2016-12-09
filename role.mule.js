@@ -1,4 +1,4 @@
-var roleMover = {
+var roleMule = {
 
   /** @param {Creep} creep **/
   run: function(creep) {
@@ -37,4 +37,4 @@ var roleMover = {
   }
 };
 
-module.exports = roleMover;
+module.exports = roleMule;

@@ -14,6 +14,18 @@ module.exports = function() {
       }
       this.createCreep(body, undefined, { role: roleName, working: false})
     };
+    StructureSpawn.prototype.createMuleCreep =
+      function(energy){
+        var numberOfParts = Math.floor(energy / 100);
+        var body = [];
+        for (let i = 0; i < numberOfParts; i++){
+            body.push(CARRY);
+        }
+        for (let i = 0; i < numberOfParts; i++){
+            body.push(MOVE);
+        }
+        this.createCreep(body, undefined, { role: mule, working: false})
+      };
   StructureSpawn.prototype.createHarvester =
     function(energy, source){
       var numberOfParts = (Math.floor((energy - 100) / 150));

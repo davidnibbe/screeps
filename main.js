@@ -4,7 +4,7 @@ var roleHarvester1 = require('role.harvester1');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
-var roleMover = require('role.mover');
+var roleMule = require('role.mule');
 var roleWallRepairer = require('role.wallrepairer');
 
 module.exports.loop = function () {
@@ -14,7 +14,7 @@ module.exports.loop = function () {
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
-    var movers = _.filter(Game.creeps, (creep) => creep.memory.role == 'mover');
+    var mules = _.filter(Game.creeps, (creep) => creep.memory.role == 'mule');
     var wallrepairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'wallrepairer');
 
     //other variable declaration
@@ -92,8 +92,8 @@ module.exports.loop = function () {
       }
 
       //code to create movers based on available energy and number of harvesters
-      if(movers.length < 1 && availablecontainers.length > 0){
-        newName = spawner.createBalancedCreep(energyavailable, 'mover');
+      if(mule.length < 1 && availablecontainers.length > 0){
+        newName = spawner.createMuleCreep(energyavailable);
         if(!(isNaN(newName))){
           console.log('Spawning new mover: ' + newName);
           break;
@@ -128,8 +128,8 @@ module.exports.loop = function () {
         if(creep.memory.role == 'repairer') {
             roleRepairer.run(creep);
         }
-        if(creep.memory.role == 'mover'){
-            roleMover.run(creep);
+        if(creep.memory.role == 'mule'){
+            roleMule.run(creep);
         }
         if(creep.memory.role == 'wallrepairer') {
             roleWallRepairer.run(creep);
