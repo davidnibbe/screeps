@@ -1,6 +1,6 @@
 module.exports = function() {
   StructureSpawn.prototype.createBalancedCreep =
-    fucntion(energy, roleName){
+    function(energy, roleName){
       var numberOfParts = Math.floor(energy / 200);
       var body = [];
       for (let i = 0; i < numberOfParts; i++){
@@ -15,7 +15,7 @@ module.exports = function() {
       this.createCreep(body, undefined, { role: roleName, working: false})
     };
   StructureSpawn.prototype.createHarvester =
-    fucntion(energy, source){
+    function(energy, source){
       var numberOfParts = (Math.floor(energy / 150 ) - 100);
       var body = [];
       for (let i = 0; i < numberOfParts; i++){
@@ -30,7 +30,7 @@ module.exports = function() {
       this.createCreep(body, undefined, { role: roleName, working: false})
     };
     StructureSpawn.prototype.createLongDistanceHarvester =
-      fucntion(energy){
+      function(energy){
         var numberOfParts = Math.floor(energy / 150 );
         var body = [];
         for (let i = 0; i < numberOfParts; i++){
