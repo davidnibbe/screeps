@@ -12,7 +12,7 @@ module.exports = function() {
       for (let i = 0; i < numberOfParts; i++){
           body.push(MOVE);
       }
-      this.createCreep(body, undefined, { role: roleName, working: false})
+      return this.createCreep(body, undefined, { role: roleName, working: false})
     };
     StructureSpawn.prototype.createMuleCreep =
       function(energy){
@@ -24,7 +24,7 @@ module.exports = function() {
         for (let i = 0; i < numberOfParts; i++){
             body.push(MOVE);
         }
-        this.createCreep(body, undefined, { role: 'mule', working: false})
+        return this.createCreep(body, undefined, { role: 'mule', working: false})
       };
   StructureSpawn.prototype.createHarvester =
     function(energy, source){
