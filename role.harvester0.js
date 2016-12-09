@@ -13,7 +13,7 @@ var roleHarvester = {
     else {
 
       //Find sapwners and extensions
-      spawnextension = creep.room.find(FIND_STRUCTURES, {
+      targets = creep.room.find(FIND_STRUCTURES, {
         filter: (structure) => {
           return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
             structure.energy < structure.energyCapacity;
@@ -26,20 +26,17 @@ var roleHarvester = {
           return (structure.structureType == STRUCTURE_CONTAINER || structure.structureType == STRUCTURE_STORAGE) && structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
         }
       });
-      var allenergystructures = spawnextension + containerstorage;
-      var nearesttarget = creep.pos.findClosestByRange(allenergystructures);
-      console.log(nearesttarget);
-      //if there are containers, transfer to container
-      if(nearesttarget != null || nearesttarget > 0){
-        if (nearesttarget > 0){
-          if(creep.transfer(nearesttarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
-            creep.moveTo(nearesttarget);
-          }
-        }
-        else{
-          if(creep.transfer(nearesttarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
-            creep.moveTo(nearesttarget);
-          }
+
+      //add containers to spawners/extensions
+      targets.push(containerstorage);
+
+      //find the nearest thing that can take energy
+      var nearesttarget = creep.pos.findClosestByRange(targets);
+
+      //transfer to nearest target
+      if (!(isNaN(nearesttarget))){
+        if(creep.transfer(nearesttarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+          creep.moveTo(nearesttarget);
         }
       }
     }
