@@ -29,15 +29,15 @@ var roleHarvester = {
         var allenergystructures = spawnextension + containerstorage;
         var nearesttarget = creep.pos.findClosestByRange(allenergystructures);
         //if there are containers, transfer to container
-        if(targetcontainer != null || targetcontainer > 0){
-          if (targetcontainer > 0){
-            if(creep.transfer(targetcontainer[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
-              creep.moveTo(targetcontainer[0]);
+        if(nearesttarget != null || nearesttarget > 0){
+          if (nearesttarget > 0){
+            if(creep.transfer(nearesttarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+              creep.moveTo(nearesttarget);
             }
           }
           else{
-            if(creep.transfer(targetcontainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
-              creep.moveTo(targetcontainer);
+            if(creep.transfer(nearesttarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+              creep.moveTo(nearesttarget);
             }
           }
         }
