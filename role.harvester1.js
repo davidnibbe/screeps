@@ -5,10 +5,8 @@ var roleHarvester = {
     if(creep.memory.harvesting == true) {
       //Find all the sources
       var sources = creep.room.find(FIND_SOURCES);
-      console.log(creep.carry.energy);
-      console.log(creep.carryCapacity);
+
       if(creep.carry.energy == creep.carryCapacity){
-          console.log('inside loop')
           creep.memory.harvesting = false;
       }
       //Harvest if close enough, if not, move closer to source
