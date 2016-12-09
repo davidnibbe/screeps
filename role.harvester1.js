@@ -9,7 +9,7 @@ var roleHarvester = {
       console.log(creep.carryCapacity);
       if(creep.carry.energy == creep.carryCapacity){
           console.log('inside loop')
-          creep.memory.harvesting == false;
+          creep.memory.harvesting = false;
       }
       //Harvest if close enough, if not, move closer to source
       if(creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
