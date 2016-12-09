@@ -52,12 +52,12 @@ module.exports.loop = function () {
       if(harvesters0.length < 2){
         newName = spawner.createHarvester(energyavailable, 0);
         if(!(isNaN(newName))){
-          console.log('Spawning new harvester0: ' + newName);
+          console.log('Spawning new harvester0: ' + 'harvester0');
           break;
         }
       }
       if(harvesters1.length < 2){
-        newName = spawner.createHarvester(energyavailable, 1);
+        newName = spawner.createHarvester(energyavailable, 'harvester1');
         if(!(isNaN(newName))){
           console.log('Spawning new harvester0: ' + newName);
           break;
