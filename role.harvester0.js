@@ -27,7 +27,7 @@ var roleHarvester = {
           }
         });
         var allenergystructures = spawnextension + containerstorage;
-        var nearesttarget = creep.room.findClosestByRange(allenergystructures);
+        var nearesttarget = creep.pos.findClosestByRange(allenergystructures);
         //if there are containers, transfer to container
         if(targetcontainer != null || targetcontainer > 0){
           if (targetcontainer > 0){
