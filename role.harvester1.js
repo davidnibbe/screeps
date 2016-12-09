@@ -20,7 +20,7 @@ var roleHarvester = {
     }
 
     if(creep.memory.working == false){
-
+      console.log(creep.name + ' working = false')
       var nearesttarget;
       if(creep.carry.energy == 0){
           creep.memory.working = true;
