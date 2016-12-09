@@ -10,44 +10,49 @@ var roleHarvester = {
           creep.memory.working = false;
       }
       //Harvest if close enough, if not, move closer to source
-      if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+      harvestresult = creep.harvest(sources[0]);
+      if(harvestresult == ERR_NOT_IN_RANGE) {
         creep.moveTo(sources[0]);
       }
-
+      if(harvestresult == ERR_NOT_ENOUGH_RESOURCES){
+        creep.memory.working = false;
+      }
     }
 
     if(creep.memory.working == false){
 
       var nearesttarget;
       if(creep.carry.energy == 0){
-          creep.memory.working = true;
+          creep.memory.harvesting = true;
       }
-      //Find sapwners and extensions
-      targets = creep.room.find(FIND_STRUCTURES, {
-        filter: (structure) => {
-          return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
-            structure.energy < structure.energyCapacity;
+      else{
+        //Find sapwners and extensions
+        targets = creep.room.find(FIND_STRUCTURES, {
+          filter: (structure) => {
+            return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
+              structure.energy < structure.energyCapacity;
+            }
+          });
+
+        //find containers
+        containerstorage = creep.room.find(FIND_STRUCTURES, {
+          filter: (structure) => {
+            return (structure.structureType == STRUCTURE_CONTAINER || structure.structureType == STRUCTURE_STORAGE) && structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
           }
         });
-
-      //find containers
-      containerstorage = creep.room.find(FIND_STRUCTURES, {
-        filter: (structure) => {
-          return (structure.structureType == STRUCTURE_CONTAINER || structure.structureType == STRUCTURE_STORAGE) && structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
-        }
-      });
-        console.log(containerstorage);
-      //add containers to spawners/extensions
-      containerstorage.push(targets);
-        console.log(targets);
-        console.log(targets.length);
-      //find the nearest thing that can take energy
-      nearesttarget = creep.pos.findClosestByRange(targets);
-        console.log(nearesttarget);
-      //transfer to nearest target
-      if (nearesttarget){
-        if(creep.transfer(nearesttarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
-          creep.moveTo(nearesttarget);
+          console.log(containerstorage);
+        //add containers to spawners/extensions
+        containerstorage = containerstorage.push(targets);
+          console.log(targets);
+          console.log(targets.length);
+        //find the nearest thing that can take energy
+        nearesttarget = creep.pos.findClosestByRange(targets);
+          console.log(nearesttarget);
+        //transfer to nearest target
+        if (nearesttarget){
+          if(creep.transfer(nearesttarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+            creep.moveTo(nearesttarget);
+          }
         }
       }
     }
