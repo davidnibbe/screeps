@@ -50,14 +50,14 @@ module.exports.loop = function () {
 
       //code to create harvesters based on available energy and number of harvesters
       if(harvesters0.length < 2){
-        newName = spawner.createHarvester(energyavailable, 0);
+        newName = spawner.createBalancedCreep(energyavailable, 0);
         if(!(isNaN(newName))){
           console.log('Spawning new harvester0: ' + 'harvester0');
           break;
         }
       }
       if(harvesters1.length < 2){
-        newName = spawner.createHarvester(energyavailable, 'harvester1');
+        newName = spawner.createBalancedCreep(energyavailable, 'harvester1');
         if(!(isNaN(newName))){
           console.log('Spawning new harvester0: ' + newName);
           break;
