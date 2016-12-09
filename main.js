@@ -6,6 +6,8 @@ var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
 var roleMule = require('role.mule');
 var roleWallRepairer = require('role.wallrepairer');
+var dispatcher = require('dispatcher');
+var energytargets;
 
 module.exports.loop = function () {
     //get a list of all the creeps in all the roles
@@ -21,6 +23,9 @@ module.exports.loop = function () {
     var logspawn = 0;
     var energyavailable = 0;
     var newname;
+
+    dispatcher.run();
+    console.log(energytargets);
 
     //clear memory of dead creeps
     for(var i in Memory.creeps) {
