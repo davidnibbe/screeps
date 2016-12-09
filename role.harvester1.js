@@ -27,7 +27,7 @@ var roleHarvester = {
       }
       else{
         //Find sapwners and extensions
-        targets = creep.room.find(FIND_STRUCTURES, {
+        spawnextensions = creep.room.find(FIND_STRUCTURES, {
           filter: (structure) => {
             return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
               structure.energy < structure.energyCapacity;
@@ -41,7 +41,7 @@ var roleHarvester = {
           }
         });
         //add containers to spawners/extensions
-        containerstorage = containerstorage.push(targets);
+        targets = [].concat(spawnextensions, containerstorage);
         //find the nearest thing that can take energy
         nearesttarget = creep.pos.findClosestByRange(targets);
         //transfer to nearest target
