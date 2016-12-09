@@ -13,7 +13,7 @@ module.exports = function() {
           body.push(MOVE);
       }
       this.createCreep(body, undefined, { role: roleName, working: false})
-    }
+    };
   StructureSpawn.prototype.createHarvester =
     fucntion(energy, source){
       var numberOfParts = (Math.floor(energy / 150 ) - 100);
@@ -28,7 +28,7 @@ module.exports = function() {
       body.push(MOVE);
       var rolename = 'harvester' + source
       this.createCreep(body, undefined, { role: roleName, working: false})
-    }
+    };
     StructureSpawn.prototype.createLongDistanceHarvester =
       fucntion(energy){
         var numberOfParts = Math.floor(energy / 150 );
@@ -43,5 +43,5 @@ module.exports = function() {
             body.push(MOVE);
         }
         this.createCreep(body, undefined, { role: ldharvester, working: false})
-      }
-}
+      };
+};
