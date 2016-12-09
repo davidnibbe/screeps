@@ -5,17 +5,16 @@ var roleHarvester = {
     if(creep.memory.harvesting == true) {
       //Find all the sources
       var sources = creep.room.find(FIND_SOURCES);
+      if(creep.carry.energy == creep.carryCapacity){
+          creep.memory.harvesting == false;
+      }
       //Harvest if close enough, if not, move closer to source
       if(creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
         creep.moveTo(sources[1]);
       }
-      if(creep.carry.energy == creep.carryCapacity){
-          creep.memory.harvesting == false;
-      }
+
     }
-    if (creep.carry.energy == creep.carryCapacity){
-      creep.memory.harvesting == false;
-    }
+
     if(creep.memory.harvesting == false){
 
       var nearesttarget;
