@@ -50,7 +50,7 @@ module.exports.loop = function () {
 
       //code to create harvesters based on available energy and number of harvesters
       if(harvesters0.length < 2){
-        newName = spawner.createBalancedCreep(energyavailable, 0);
+        newName = spawner.createBalancedCreep(energyavailable, 'harvester0');
         if(!(isNaN(newName))){
           console.log('Spawning new harvester0: ' + 'harvester0');
           break;
@@ -101,7 +101,7 @@ module.exports.loop = function () {
       }
 
       //code to create repairers based on available energy and number of harvesters
-      if(wallrepairers.length < 2){
+      if(wallrepairers.length < 1){
         newName = spawner.createBalancedCreep(energyavailable, 'wallrepairer');
         if(!(isNaN(newName))){
           console.log('Spawning new wallrepairer: ' + newName);

@@ -21,12 +21,13 @@ var roleHarvester = {
           });
 
         //find containers
-        targetcontainer = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+        containerstorage = creep.room.find(FIND_STRUCTURES, {
           filter: (structure) => {
-            return (structure.structureType == STRUCTURE_CONTAINER) && structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
+            return (structure.structureType == STRUCTURE_CONTAINER || structure.structureType == STRUCTURE_STORAGE) && structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
           }
         });
-
+        var allenergystructures = spawnextension + containerstorage;
+        var nearesttarget = creep.room.findClosestByRange(allenergystructures);
         //if there are containers, transfer to container
         if(targetcontainer != null || targetcontainer > 0){
           if (targetcontainer > 0){
