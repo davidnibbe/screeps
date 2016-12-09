@@ -11,7 +11,8 @@ var roleHarvester = {
       }
     }
     else {
-
+      var nearesttarget;
+      
       //Find sapwners and extensions
       targets = creep.room.find(FIND_STRUCTURES, {
         filter: (structure) => {
@@ -31,7 +32,7 @@ var roleHarvester = {
       targets.push(containerstorage);
 
       //find the nearest thing that can take energy
-      var nearesttarget = creep.pos.findClosestByRange(targets);
+      nearesttarget = creep.pos.findClosestByRange(targets);
 
       //transfer to nearest target
       if (nearesttarget){
