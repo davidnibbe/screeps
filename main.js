@@ -108,13 +108,13 @@ module.exports.loop = function () {
       }
 
       //code to create miners based on available energy
-      if(miners.length < (creep.room.find(FIND_SOURCES)).length && availablecontainers.length > 0){
+      /*if(miners.length < (creep.room.find(FIND_SOURCES)).length && availablecontainers.length > 0){
         newName = spawner.createbalCreep(energyavailable);
         if(newName){
-          console.log('Spawning new mover: ' + newName);
+          console.log('Spawning new miner: ' + newName);
           break;
         }
-      }
+      }*/
 
       //code to create repairers based on available energy
       if(wallrepairers.length < 1){
