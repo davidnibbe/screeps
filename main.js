@@ -6,6 +6,7 @@ var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
 var roleMule = require('role.mule');
 var roleWallRepairer = require('role.wallrepairer');
+var roleMiner = require('role.miner');
 var dispatcher = require('dispatcher');
 var energytargets;
 
@@ -17,6 +18,7 @@ module.exports.loop = function () {
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
     var mules = _.filter(Game.creeps, (creep) => creep.memory.role == 'mule');
+    var mules = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
     var wallrepairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'wallrepairer');
 
     //other variable declaration
@@ -55,57 +57,66 @@ module.exports.loop = function () {
 
       //code to create harvesters based on available energy and number of harvesters
       if(harvesters0.length < 2){
-        newName = spawner.createBalancedCreep(energyavailable, 'harvester0');
+        newName = spawner.spawnBalancedCreep(energyavailable, 'harvester0');
         if(newName){
           console.log('Spawning new harvester0: ' + newName);
           break;
         }
       }
       if(harvesters1.length < 2){
-        newName = spawner.createBalancedCreep(energyavailable, 'harvester1');
+        newName = spawner.spawnBalancedCreep(energyavailable, 'harvester1');
         if(newName){
           console.log('Spawning new harvester1: ' + newName);
           break;
         }
       }
 
-      //code to create builders based on available energy and number of harvesters
+      //code to create builders based on available energy
       if(builders.length < 1){
-        newName = spawner.createBalancedCreep(energyavailable, 'builder');
+        newName = spawner.spawnBalancedCreep(energyavailable, 'builder');
         if(newName){
           console.log('Spawning new builder: ' + newName);
           break;
         }
       }
 
-      //code to create upgraders based on available energy and number of harvesters
+      //code to create upgraders based on available energy
       if(upgraders.length < 1){
-        newName = spawner.createBalancedCreep(energyavailable, 'upgrader');
+        newName = spawner.spawnBalancedCreep(energyavailable, 'upgrader');
         if(newName){
           console.log('Spawning new upgrader: ' + newName);
           break;
         }
       }
 
-      //code to create repairers based on available energy and number of harvesters
+      //code to create repairers based on available energy
       if(repairers.length < 1){
-        newName = spawner.createBalancedCreep(energyavailable, 'repairer');
+        newName = spawner.spawnBalancedCreep(energyavailable, 'repairer');
         if(newName){
           console.log('Spawning new repairer: ' + newName);
           break;
         }
       }
 
-      //code to create movers based on available energy and number of harvesters
+      //code to create mules based on available energy
       if(mules.length < 2 && availablecontainers.length > 0){
-        newName = spawner.createMuleCreep(energyavailable);
+        newName = spawner.spawnMuleCreep(energyavailable);
         if(newName){
           console.log('Spawning new mover: ' + newName);
           break;
         }
       }
 
-      //code to create repairers based on available energy and number of harvesters
+      //code to create miners based on available energy
+      if(miners.length < (creep.room.find(FIND_SOURCES)).length && availablecontainers.length > 0){
+        newName = spawner.createbalCreep(energyavailable);
+        if(newName){
+          console.log('Spawning new mover: ' + newName);
+          break;
+        }
+      }
+
+      //code to create repairers based on available energy
       if(wallrepairers.length < 1){
         newName = spawner.createBalancedCreep(energyavailable, 'wallrepairer');
         if(newName){
