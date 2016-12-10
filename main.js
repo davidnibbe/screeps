@@ -102,7 +102,7 @@ module.exports.loop = function () {
       if(mules.length < 2 && availablecontainers.length > 0){
         newName = spawner.spawnMule(energyavailable);
         if(newName){
-          console.log('Spawning new mover: ' + newName);
+          console.log('Spawning new mule: ' + newName);
           break;
         }
       }
