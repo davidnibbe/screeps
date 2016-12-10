@@ -100,7 +100,7 @@ module.exports.loop = function () {
 
       //code to create mules based on available energy
       if(mules.length < 2 && availablecontainers.length > 0){
-        newName = spawner.spawnMuleCreep(energyavailable);
+        newName = spawner.spawnMule(energyavailable);
         if(newName){
           console.log('Spawning new mover: ' + newName);
           break;
