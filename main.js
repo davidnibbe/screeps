@@ -118,7 +118,7 @@ module.exports.loop = function () {
 
       //code to create repairers based on available energy
       if(wallrepairers.length < 1){
-        newName = spawner.createBalancedCreep(energyavailable, 'wallrepairer');
+        newName = spawner.spawnBalancedCreep(energyavailable, 'wallrepairer');
         if(newName){
           console.log('Spawning new wallrepairer: ' + newName);
           break;
