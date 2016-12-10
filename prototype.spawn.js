@@ -1,5 +1,5 @@
 module.exports = function() {
-  StructureSpawn.prototype.createBalancedCreep =
+  StructureSpawn.prototype.spawnBalancedCreep =
     function(energy, roleName){
       var numberOfParts = Math.floor(energy / 200);
       var body = [];
@@ -14,7 +14,7 @@ module.exports = function() {
       }
       return this.createCreep(body, undefined, { role: roleName, working: false})
     };
-    StructureSpawn.prototype.createMuleCreep =
+    StructureSpawn.prototype.spawnMule =
       function(energy){
         var numberOfParts = Math.floor(energy / 100);
         var body = [];
@@ -26,20 +26,17 @@ module.exports = function() {
         }
         return this.createCreep(body, undefined, { role: 'mule', working: false})
       };
-  StructureSpawn.prototype.createHarvester =
+  StructureSpawn.prototype.spawnMiner =
     function(energy, source){
-      var numberOfParts = (Math.floor((energy - 100) / 150));
       var body = [];
-      for (let i = 0; i < numberOfParts; i++){
-          body.push(WORK);
-      }
-      for (let i = 0; i < numberOfParts; i++){
-          body.push(CARRY);
-      }
+      body.push(WORK);
+      body.push(WORK);
+      body.push(WORK);
+      body.push(WORK);
+      body.push(WORK);
+      body.push(CARRY);
       body.push(MOVE);
-      body.push(MOVE);
-      var roleName = 'harvester' + source;
-      this.createCreep(body, undefined, { role: roleName, working: false})
+      this.createCreep(body, undefined, { role: 'miner', sourceId: source})
     };
     StructureSpawn.prototype.createLongDistanceHarvester =
       function(energy){
