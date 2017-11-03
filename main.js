@@ -6,7 +6,6 @@ var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
 var roleMule = require('role.mule');
 var roleWallRepairer = require('role.wallrepairer');
-var roleMiner = require('role.miner');
 var dispatcher = require('dispatcher');
 var energytargets;
 
