@@ -17,7 +17,6 @@ module.exports.loop = function () {
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
     var mules = _.filter(Game.creeps, (creep) => creep.memory.role == 'mule');
-    var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
     var wallrepairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'wallrepairer');
 
     //other variable declaration
