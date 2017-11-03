@@ -120,8 +120,8 @@ module.exports.loop = function () {
           console.log('Spawning new wallrepairer: ' + newName);
           break;
         }
-      }
-    }*/
+      }*/
+    }
 
     //main loop for creeps: based on role jump to the role module associated with that role
     for(var name in Game.creeps) {
