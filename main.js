@@ -25,7 +25,6 @@ module.exports.loop = function () {
     var newname;
 
     dispatcher.run();
-    console.log(energytargets);
 
     //clear memory of dead creeps
     for(var i in Memory.creeps) {
