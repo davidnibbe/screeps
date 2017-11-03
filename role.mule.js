@@ -21,7 +21,7 @@ var roleMule = {
   	if(creep.memory.working === true){
       if(targets){
         if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
-  	    	creep.moveTo(targets[0]);
+  	    	creep.moveTo(targets[0], {reusePath: 25});
   	    }
       }
       else{
@@ -32,7 +32,7 @@ var roleMule = {
             }
         });
         if(creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
-  	    	creep.moveTo(storage);
+  	    	creep.moveTo(storage, {reusePath: 25});
   	    }
       }
   	}
@@ -44,7 +44,7 @@ var roleMule = {
         });
 
 	    if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(container);
+        creep.moveTo(container, {reusePath: 25});
       }
     }
   }

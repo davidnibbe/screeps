@@ -7,7 +7,7 @@ var roleRepairer = {
       var spawn = creep.pos.findClosestByRange(FIND_MY_SPAWNS);
       if (spawn.energy > 199){
         if (spawn.transferEnergy(creep) == ERR_NOT_IN_RANGE){
-          creep.moveTo(spawn);
+          creep.moveTo(spawn, {reusePath: 25});
         }
       }
     }
@@ -18,10 +18,10 @@ var roleRepairer = {
         }
       });
       if (creep.repair(allstructures[0]) == ERR_NOT_IN_RANGE){
-        creep.moveTo(allstructures[0]);
+        creep.moveTo(allstructures[0], {reusePath: 25});
       }
       else if(!(isNaN(allstructures))){
-        roleBuilder.run(creep);
+        roleBuilder.run(creep, {reusePath: 25});
       }
     }
   }

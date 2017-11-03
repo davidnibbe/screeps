@@ -14,14 +14,14 @@ var roleUpgrader = {
 
     if(creep.memory.working) {
           if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(creep.room.controller);
+              creep.moveTo(creep.room.controller, {reusePath: 25});
           }
     }
     else {
       var spawn = creep.pos.findClosestByRange(FIND_MY_SPAWNS);
       if (creep.room.energyAvailable > (creep.room.energyCapacityAvailable * .5)){
         if(creep.withdraw(spawn, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
-          creep.moveTo(spawn);
+          creep.moveTo(spawn, {reusePath: 25});
         }
       }
     }

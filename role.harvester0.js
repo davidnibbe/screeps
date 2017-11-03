@@ -12,7 +12,7 @@ var roleHarvester = {
       //Harvest if close enough, if not, move closer to source
       harvestresult = creep.harvest(sources[0]);
       if(harvestresult == ERR_NOT_IN_RANGE) {
-        creep.moveTo(sources[0]);
+        creep.moveTo(sources[0], {reusePath: 25});
       }
       if(harvestresult == ERR_NOT_ENOUGH_RESOURCES){
         creep.memory.working = false;
@@ -46,7 +46,7 @@ var roleHarvester = {
         //transfer to nearest target
         if (nearesttarget){
           if(creep.transfer(nearesttarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
-            creep.moveTo(nearesttarget);
+            creep.moveTo(nearesttarget, {reusePath: 25});
           }
         }
       }

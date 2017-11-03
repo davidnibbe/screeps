@@ -29,13 +29,13 @@ var roleWallRepairer = {
       var spawn = creep.pos.findClosestByRange(FIND_MY_SPAWNS);
       if (creep.room.energyAvailable < creep.room.energyCapacityAvailable * .50){
         if (spawn.transferEnergy(creep) == ERR_NOT_IN_RANGE){
-          creep.moveTo(spawn);
+          creep.moveTo(spawn, {reusePath: 25});
         }
       }
     }
     else {
       if (creep.repair(target) == ERR_NOT_IN_RANGE){
-        creep.moveTo(target);
+        creep.moveTo(target, {reusePath: 25});
       }
     }
   }
