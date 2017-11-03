@@ -114,13 +114,13 @@ module.exports.loop = function () {
       }*/
 
       //code to create repairers based on available energy
-      /*if(wallrepairers.length < 1){
+      if(wallrepairers.length < 1){
         newName = spawner.spawnBalancedCreep(energyavailable, 'wallrepairer');
         if(newName){
           console.log('Spawning new wallrepairer: ' + newName);
           break;
         }
-      }*/
+      }
     }
 
     //main loop for creeps: based on role jump to the role module associated with that role
