@@ -20,13 +20,7 @@ var roleMule = {
 
   	if(creep.memory.working === true){
       console.log('Im working');
-      if(targets !=== undefined){
-        console.log(targets[0]);
-        if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
-  	    	creep.moveTo(targets[0], {reusePath: 25});
-  	    }
-      }
-      else{
+      if(!targets){
         console.log("looking for storage");
         var storage = creep.room.find(FIND_MY_STRUCTURES, {
           filter: (structure) => {
@@ -35,7 +29,13 @@ var roleMule = {
             }
         });
         if(creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
-  	    	creep.moveTo(storage, {reusePath: 25});
+          creep.moveTo(storage, {reusePath: 25});
+        }
+      }
+      else{
+        console.log(targets[0]);
+        if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+  	    	creep.moveTo(targets[0], {reusePath: 25});
   	    }
       }
   	}
