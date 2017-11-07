@@ -123,6 +123,16 @@ module.exports.loop = function () {
       }
     }
 
+    //code to attack hostiles
+    var hostiles = Game.rooms[roomName].find(FIND_HOSTILE_CREEPS);
+    if(hostiles.length > 0) {
+        var username = hostiles[0].owner.username;
+        Game.notify(`User ${username} spotted in room ${roomName}`);
+        var towers = Game.rooms[roomName].find(
+            FIND_MY_STRUCTURES, {filter: {structureType: STRUCTURE_TOWER}});
+        towers.forEach(tower => tower.attack(hostiles[0]));
+    }
+
     //main loop for creeps: based on role jump to the role module associated with that role
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
