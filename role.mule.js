@@ -42,9 +42,19 @@ var roleMule = {
         filter: (structure) => {
           return (structure.structureType == STRUCTURE_CONTAINER) && structure.store[RESOURCE_ENERGY] > 0}
         });
-
-	    if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(container, {reusePath: 25});
+      if(container){
+        if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(container, {reusePath: 25});
+        }
+      }
+      else{
+        var storage = creep.room.find(FIND_MY_STRUCTURES, {
+          filter: (structure) => {
+            return (structure.structureType == STRUCTURE_STORAGE) &&
+              structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
+            }
+        });
+        creep.withdraw(storage, {reusePath: 25});
       }
     }
   }
