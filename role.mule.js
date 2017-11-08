@@ -28,6 +28,7 @@ var roleMule = {
               structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
             }
         });
+        console.log(storage);
         if(creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
           creep.moveTo(storage, {reusePath: 25});
         }
