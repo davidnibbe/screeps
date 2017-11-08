@@ -29,9 +29,9 @@ var roleMule = {
             }
         });
         console.log(storage);
-        \\if(creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+        //if(creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
           creep.moveTo(storage, {reusePath: 25});
-        \\}
+        //}
       }
       else{
         console.log(targets[0]);
