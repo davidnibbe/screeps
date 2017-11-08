@@ -20,7 +20,7 @@ var roleMule = {
 
   	if(creep.memory.working === true){
       console.log('Im working');
-      if(targets === undefined){
+      if(targets[0] === undefined){
         console.log("looking for storage");
         var storage = creep.room.find(FIND_MY_STRUCTURES, {
           filter: (structure) => {
