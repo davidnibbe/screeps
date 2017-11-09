@@ -6,7 +6,7 @@ var roleRepairer = {
     if (creep.carry.energy === 0){
       var spawn = creep.pos.findClosestByRange(FIND_MY_SPAWNS);
       if (spawn.energy > 199){
-        if (spawn.transferEnergy(creep) == ERR_NOT_IN_RANGE){
+        if (creep.withdraw(spawn) == ERR_NOT_IN_RANGE){
           creep.moveTo(spawn, {reusePath: 25});
         }
       }
