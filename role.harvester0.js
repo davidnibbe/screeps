@@ -14,7 +14,7 @@ var roleHarvester = {
       if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
         creep.moveTo(sources[0], {reusePath: 25});
       }
-      if(harvestresult == ERR_NOT_ENOUGH_RESOURCES){
+      else if(creep.harvest(sources[0]) == ERR_NOT_ENOUGH_RESOURCES){
         roleBuilder.run(creep);
       }
     }
