@@ -28,7 +28,7 @@ var roleWallRepairer = {
     if (creep.carry.energy === 0){
       var spawn = creep.pos.findClosestByRange(FIND_MY_SPAWNS);
       if (creep.room.energyAvailable > creep.room.energyCapacityAvailable * .50){
-        if (creep.withdraw(spawn) == ERR_NOT_IN_RANGE){
+        if (creep.withdraw(spawn, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
           creep.moveTo(spawn, {reusePath: 25});
         }
       }
