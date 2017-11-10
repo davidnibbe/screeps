@@ -35,7 +35,7 @@ var roleBuilder = {
 
         if (!creep.memory.harvesting){
           if (creep.pos.isNearTo(spawn)){
-              var transferresult = creep.withdraw(spawn);
+              var transferresult = creep.withdraw(spawn, RESOURCE_ENERGY);
               creep.say('transferring');
           }
           else{
