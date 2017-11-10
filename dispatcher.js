@@ -14,8 +14,11 @@ var dispatcher = {
           return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) && structure.energy < structure.energyCapacity;
         }
       });
-      
     }
+  }
+
+  getConstructionSites: funciton(room){
+    console.log(room);
   }
 };
 
