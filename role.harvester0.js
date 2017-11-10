@@ -1,3 +1,4 @@
+var roleBuilder = require('role.builder');
 var roleHarvester = {
 
   /** @param {Creep} creep **/
@@ -10,12 +11,11 @@ var roleHarvester = {
           creep.memory.working = false;
       }
       //Harvest if close enough, if not, move closer to source
-      harvestresult = creep.harvest(sources[0]);
-      if(harvestresult == ERR_NOT_IN_RANGE) {
+      if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
         creep.moveTo(sources[0], {reusePath: 25});
       }
       if(harvestresult == ERR_NOT_ENOUGH_RESOURCES){
-        creep.memory.working = false;
+        roleBuilder.run(creep);
       }
     }
 
