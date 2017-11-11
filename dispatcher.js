@@ -4,6 +4,7 @@ var dispatcher = {
   run: function() {
     //get all the spawns that I control
     var spawns = Game.spawns;
+    console.log(spawns.length);
     //we will run the dispatcher on each room we own
     //(indicated by spawn presence)
     for (i = 0; i < spawns.length; i++){
