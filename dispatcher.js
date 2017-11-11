@@ -2,15 +2,12 @@ var dispatcher = {
 
   /** @param {Creep} creep **/
   run: function() {
-    //get all the spawns that I control
-    var spawns = Game.spawns;
-    console.log(spawns.length);
     //we will run the dispatcher on each room we own
     //(indicated by spawn presence)
-    for (i = 0; i < spawns.length; i++){
-      var spawn = Game.spawns[i];
+    for (var id in Game.spawns){
+      var spawn = Game.spawns[id];
       console.log(spawn);
-      var room = spawn.room
+      var room = spawn.pos.roomname
       console.log(room);
       energytargets = room.find(FIND_MY_STRUCTURES, {
         filter: (structure) => {
