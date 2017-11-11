@@ -24,7 +24,7 @@ module.exports.loop = function () {
     var energyavailable = 0;
     var newname;
 
-    dispatcher.run();
+    dispatcher.getConstructionSite();
 
     //clear memory of dead creeps
     for(var i in Memory.creeps) {
