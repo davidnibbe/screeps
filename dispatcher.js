@@ -7,7 +7,7 @@ var dispatcher = {
     for (var id in Game.spawns){
       var spawn = Game.spawns[id];
       console.log(spawn);
-      var room = spawn.pos.roomname
+      var room = spawn.room
       console.log(room);
       energytargets = room.find(FIND_MY_STRUCTURES, {
         filter: (structure) => {
