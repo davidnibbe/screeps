@@ -7,7 +7,7 @@ var dispatcher = {
     //we will run the dispatcher on each room we own
     //(indicated by spawn presence)
     for (i = 0; i < spawns.length; i++){
-      var spawn = Game.spawns[spawns[i]];
+      var spawn = Game.spawns[i];
       var room = spawn.room
       energytargets = room.find(FIND_MY_STRUCTURES, {
         filter: (structure) => {
@@ -19,15 +19,14 @@ var dispatcher = {
 };
 
 var getConstructionSite = {
-  /** @param {Creep} creep **/
-  run: function() {
+  function() {
     //get all the spawns that I control
     var spawns = Game.spawns;
     //we will run the dispatcher on each room we own
     //(indicated by spawn presence)
     for (i = 0; i < spawns.length; i++){
-      var spawn = Game.spawns[spawns[i]];
-      var room = spawn.room
+      var spawn = Game.spawns[spawn[i]];
+      var room = spawn.pos.roomName;
       console.log(room);
       energytargets = room.find(FIND_MY_STRUCTURES, {
         filter: (structure) => {
