@@ -4,11 +4,11 @@ var dispatcher = {
   run: function() {
     //we will run the dispatcher on each room we own
     //(indicated by spawn presence)
-    for (var id in Game.spawns){
-      var spawn = Game.spawns[id];
-      console.log(spawn);
-      var room = spawn.room
+    for (var name in Game.rooms){
+      var room = Game.rooms[name];
       console.log(room);
+      var spawn = room.find(FIND_MY_SPAWNS)
+      console.log(spawn);
       energytargets = room.find(FIND_MY_STRUCTURES, {
         filter: (structure) => {
           return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) && structure.energy < structure.energyCapacity;
