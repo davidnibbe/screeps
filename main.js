@@ -29,7 +29,7 @@ module.exports.loop = function () {
     //respawn dead creep
     for(var i in Memory.creeps) {
       if(!Game.creeps[i]) {
-        var spawner = Game.getObjectById(Memory.creeps[i].memory.spawn.id);
+        var spawner = Game.getObjectById(Memory.creeps[i].spawn.id);
         energyAvailable = spawner.room.energyAvailable;
         if(Memory.creeps[i].role == 'mule'){
           spawner.spawnMule(energyAvailable, Memory.creeps[i].name, spawner);
