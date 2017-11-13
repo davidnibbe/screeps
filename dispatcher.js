@@ -23,27 +23,25 @@ var dispatcher = {
         console.log(spawn[0].id);
         room.memory.spawn.id = spawn[0].id;
       }
+      //get all the construction sites in the creeps room
+      if(!room.memory.constructionSites){
+        var constructionSites = room.find(FIND_CONSTRUCTION_SITES);
+        room.memory.constructionSites = {};
+        for(var i in constructionSites){
+          var site = constructionSites[i];
+          room.memory.constructionSites[site.id] = {};
+          room.memory.constructionSites[site.id].workers = 0;
+        }
+      }
     }
   }
 };
 
 var getConstructionSite = {
-  function() {
-    //get all the spawns that I control
-    var spawns = Game.spawns;
-    //we will run the dispatcher on each room we own
-    //(indicated by spawn presence)
-    for (i = 0; i < spawns.length; i++){
-      var spawn = Game.spawns[spawn[i]];
-      var room = spawn.pos.roomName;
-      console.log(room);
-      energytargets = room.find(FIND_MY_STRUCTURES, {
-        filter: (structure) => {
-          return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) && structure.energy < structure.energyCapacity;
-        }
-      });
+  function(room) {
+
+
     }
-  }
 };
 
 module.exports = {dispatcher, getConstructionSite};
