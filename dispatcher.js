@@ -18,8 +18,12 @@ var dispatcher = {
       }
       if(!room.memory.spawn){
         console.log("Room: " + roomname + " doesn't have spawn set in memory. Setting.")
-        var spawn = room.find(FIND_MY_SPAWNS)
+        var spawns = room.find(FIND_MY_SPAWNS)
         room.memory.spawn = {}
+        for(var i in spawns){
+          var spawn = spawn[i];
+          spawn.memory = room.memory.sources[spawn.id] = {};
+        }
       }
       console.log(room);
       if(Memory.rooms.room)
