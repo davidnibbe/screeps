@@ -29,13 +29,13 @@ module.exports.loop = function () {
     //respawn dead creep
     for(var i in Memory.creeps) {
       if(!Game.creeps[i]) {
-        var spawner = Game.getObjectById(Game.creeps[i].memory.spawn.id);
+        var spawner = Game.getObjectById(Memory.creeps[i].memory.spawn.id);
         energyAvailable = spawner.room.energyAvailable;
-        if(Game.creeps[i].memory.role == 'mule'){
-          spawner.spawnMule(energyAvailable, Game.creeps[i].name, spawner);
+        if(Memory.creeps[i].role == 'mule'){
+          spawner.spawnMule(energyAvailable, Memory.creeps[i].name, spawner);
         }
         else{
-          spawner.spawnBalancedCreep(energyAvailable, Game.creeps[i].name, spawner, Game.creeps[i].memory.role);
+          spawner.spawnBalancedCreep(energyAvailable, Memory.creeps[i], spawner, Memory.creeps[i].role);
         }
       }
     }
