@@ -21,28 +21,28 @@ module.exports.loop = function () {
 
     //other variable declaration
     var logspawn = 0;
-    var energyavailable = 0;
+    var energyAvailable = 0;
     var newname;
 
     dispatcher.dispatcher.run();
 
-    //clear memory of dead creeps
+    //respawn dead creep
     for(var i in Memory.creeps) {
       if(!Game.creeps[i]) {
-        delete Memory.creeps[i];
+        var spawner = Game.getObjectById(Game.creeps[i].memory.spawn.id);
+        energyAvailable = spawner.room.energyAvailable;
+        if(Game.creeps[i].memory.role == 'mule'){
+          spawner.spawnMule(energyAvailable, Game.creeps[i].name, spawner);
+        }
+        else{
+          spawner.spawnBalancedCreep(energyAvailable, Game.creeps[i].name, spawner, Game.creeps[i].memory.role);
+        }
       }
     }
 
-    //main loop for spawners
+    /*main loop for spawners
     for(var spawnname in Game.spawns) {
       var spawner = Game.spawns[spawnname];
-
-      availablecontainers = spawner.room.find(FIND_STRUCTURES, {
-                  filter: (structure) => {
-                      return (structure.structureType == STRUCTURE_CONTAINER);
-                  }
-      });
-
       energyavailable = spawner.room.energyAvailable;
 
       //code to create harvesters based on available energy and number of harvesters
@@ -97,15 +97,6 @@ module.exports.loop = function () {
         }
       }
 
-      //code to create miners based on available energy
-      /*if(miners.length < (creep.room.find(FIND_SOURCES)).length && availablecontainers.length > 0){
-        newName = spawner.createbalCreep(energyavailable);
-        if(newName){
-          console.log('Spawning new miner: ' + newName);
-          break;
-        }
-      }*/
-
       //code to create repairers based on available energy
       if(wallrepairers.length < 1){
         newName = spawner.spawnBalancedCreep(energyavailable, 'wallrepairer');
@@ -114,7 +105,7 @@ module.exports.loop = function () {
           break;
         }
       }
-    }
+    }*/
 
     //code to attack hostiles
     var hostiles = Game.rooms.E22N12.find(FIND_HOSTILE_CREEPS);
