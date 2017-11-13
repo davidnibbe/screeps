@@ -1,4 +1,5 @@
 var roleUpgrader = require('role.upgrader');
+var dispatcher = require('dispatcher');
 var roleBuilder = {
 
     /** @param {Creep} creep **/
