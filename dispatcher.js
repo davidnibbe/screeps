@@ -18,22 +18,11 @@ var dispatcher = {
       }
       if(!room.memory.spawn){
         console.log("Room: " + roomname + " doesn't have spawn set in memory. Setting.")
-        var spawns = room.find(FIND_MY_SPAWNS);
-        console.log(spawns);
+        var spawn = room.find(FIND_MY_SPAWNS);
         room.memory.spawn = {};
-        for(var i in spawns){
-          var spawn = spawn[i];
-          spawn.memory = room.memory.sources[spawn.id] = {};
-        }
+        console.log(spawn[0].id);
+        room.memory.spawn.id = spawn[0].id;
       }
-      console.log(room);
-      if(Memory.rooms.room)
-      console.log(spawn);
-      energytargets = room.find(FIND_MY_STRUCTURES, {
-        filter: (structure) => {
-          return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) && structure.energy < structure.energyCapacity;
-        }
-      });
     }
   }
 };
