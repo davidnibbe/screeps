@@ -26,7 +26,7 @@ module.exports.loop = function () {
 
     dispatcher.dispatcher.run();
 
-    //respawn dead creep
+    /*/respawn dead creep
     for(var i in Memory.creeps) {
       if(!Game.creeps[i]) {
         var spawner = Game.getObjectById(Memory.creeps[i].spawn.id);
@@ -38,9 +38,9 @@ module.exports.loop = function () {
           spawner.spawnBalancedCreep(energyAvailable, Memory.creeps[i], spawner, Memory.creeps[i].role);
         }
       }
-    }
+    }*/
 
-    /*main loop for spawners
+    //main loop for spawners
     for(var spawnname in Game.spawns) {
       var spawner = Game.spawns[spawnname];
       energyavailable = spawner.room.energyAvailable;
@@ -105,7 +105,7 @@ module.exports.loop = function () {
           break;
         }
       }
-    }*/
+    }
 
     //code to attack hostiles
     var hostiles = Game.rooms.E22N12.find(FIND_HOSTILE_CREEPS);
