@@ -4,10 +4,25 @@ var dispatcher = {
   run: function() {
     //we will run the dispatcher on each room we own
     //(indicated by spawn presence)
-    for (var name in Game.rooms){
-      var room = Game.rooms[name];
+    for (var roomName in Game.rooms){
+      var room = Game.rooms[roomName];
+      var roomname = room.name;
+      if(!Memory.rooms.sources){
+        room.memory.sources = {};
+        var sources = room.find(FIND_SOURCES);
+        for(var i in sources){
+          var source = sources[i];
+          source.memory = room.memory.sources[source.id] = {};
+          source.memory.workers = 0;
+        }
+      }
+      if(!Memory.rooms.roomname.spawn){
+        console.log("Room: " + roomname + " doesn't have spawn set in memory. Setting.")
+        var spawn = room.find(FIND_MY_SPAWNS)
+        Memory.rooms.roomname.spawn = spawn.id
+      }
       console.log(room);
-      var spawn = room.find(FIND_MY_SPAWNS)
+      if(Memory.rooms.room)
       console.log(spawn);
       energytargets = room.find(FIND_MY_STRUCTURES, {
         filter: (structure) => {
