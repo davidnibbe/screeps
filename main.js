@@ -26,6 +26,12 @@ module.exports.loop = function () {
 
     dispatcher.dispatcher.run();
 
+    for(var name in Game.creeps){
+      creep = Game.creeps[name];
+      creep.memory.spawn = {}
+      creep.memory.spawn = '59fb17fe85861b45b2a7780a'
+    }
+
     //respawn dead creep
     for(var i in Memory.creeps) {
       if(!Game.creeps[i]) {
@@ -39,12 +45,7 @@ module.exports.loop = function () {
         }
       }
     }
-    for(var name in Game.creeps){
-      creep = Game.creeps[name];
-      creep.memory.spawn = {}
-      creep.memory.spawn = '59fb17fe85861b45b2a7780a'
-    }
-    
+
     /*main loop for spawners
     for(var spawnname in Game.spawns) {
       var spawner = Game.spawns[spawnname];
