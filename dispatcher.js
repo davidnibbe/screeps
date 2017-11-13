@@ -20,7 +20,7 @@ var dispatcher = {
         var sources = room.find(FIND_SOURCES);
         for(var i in sources){
           var source = sources[i];
-          source.memory = this.memory.sources[source.id];
+          source.memory = room.memory.sources[source.id];
         }
       }
 
