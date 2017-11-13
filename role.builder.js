@@ -15,15 +15,17 @@ var roleBuilder = {
 	    }
 
 	    if(creep.memory.working) {
-	        var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-            if(targets.length > 0) {
-                if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(targets[0], {reusePath: 25});
-                }
+        var target = dispatcher.getConstructionSite.run(creep.room);
+        console.log(target);
+        if(target[0]) {
+            if(creep.build(target[0]) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(target[0], {reusePath: 25});
             }
-            else{
-              roleUpgrader.run(creep);
-            }
+        }
+        else{
+            console.log("I'm a upgrader harry.")
+          roleUpgrader.run(creep);
+        }
 	    }
 	    else {
       	var sources = creep.pos.findClosestByPath(FIND_SOURCES);

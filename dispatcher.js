@@ -58,10 +58,13 @@ var dispatcher = {
 };
 
 var getConstructionSite = {
-  function(room) {
-
-
+  run: function(room) {
+    var availableSites = room.memory.constructionSites
+    for(var i in availableSites){
+      var site = availableSites[i];
+      return site;
     }
+  }
 };
 
 module.exports = {dispatcher, getConstructionSite};
