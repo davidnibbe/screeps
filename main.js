@@ -47,14 +47,14 @@ module.exports.loop = function () {
 
       //code to create harvesters based on available energy and number of harvesters
       if(harvesters0.length < 2){
-        newName = spawner.spawnBalancedCreep(energyavailable, 'harvester0');
+        newName = spawner.spawnBalancedCreep(energyavailable, undefined, spawner.id, 'harvester0');
         if(newName){
           console.log('Spawning new harvester0: ' + newName);
           break;
         }
       }
       if(harvesters1.length < 2){
-        newName = spawner.spawnBalancedCreep(energyavailable, 'harvester1');
+        newName = spawner.spawnBalancedCreep(energyavailable, undefined, spawner.id, 'harvester1');
         if(newName){
           console.log('Spawning new harvester1: ' + newName);
           break;
@@ -63,7 +63,7 @@ module.exports.loop = function () {
 
       //code to create builders based on available energy
       if(builders.length < 1){
-        newName = spawner.spawnBalancedCreep(energyavailable, 'builder');
+        newName = spawner.spawnBalancedCreep(energyavailable, undefined, spawner.id, 'builder');
         if(newName){
           console.log('Spawning new builder: ' + newName);
           break;
@@ -72,7 +72,7 @@ module.exports.loop = function () {
 
       //code to create upgraders based on available energy
       if(upgraders.length < 1){
-        newName = spawner.spawnBalancedCreep(energyavailable, 'upgrader');
+        newName = spawner.spawnBalancedCreep(energyavailable, undefined, spawner.id, 'upgrader');
         if(newName){
           console.log('Spawning new upgrader: ' + newName);
           break;
@@ -81,7 +81,7 @@ module.exports.loop = function () {
 
       //code to create repairers based on available energy
       if(repairers.length < 1){
-        newName = spawner.spawnBalancedCreep(energyavailable, 'repairer');
+        newName = spawner.spawnBalancedCreep(energyavailable, undefined, spawner.id, 'repairer');
         if(newName){
           console.log('Spawning new repairer: ' + newName);
           break;
@@ -90,7 +90,7 @@ module.exports.loop = function () {
 
       //code to create mules based on available energy
       if(mules.length < 2 && availablecontainers.length > 0){
-        newName = spawner.spawnMule(energyavailable);
+        newName = spawner.spawnMule(energyavailable, undefined, spawner.id);
         if(newName){
           console.log('Spawning new mule: ' + newName);
           break;
@@ -99,7 +99,7 @@ module.exports.loop = function () {
 
       //code to create repairers based on available energy
       if(wallrepairers.length < 1){
-        newName = spawner.spawnBalancedCreep(energyavailable, 'wallrepairer');
+        newName = spawner.spawnBalancedCreep(energyavailable, undefined, spawner.id, 'wallrepairer');
         if(newName){
           console.log('Spawning new wallrepairer: ' + newName);
           break;
